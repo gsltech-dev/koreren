@@ -1,0 +1,15 @@
+/* index.css */
+@import "tailwindcss";
+
+/* src/index.css 등 전역 */
+html {
+  scrollbar-gutter: stable;
+} /* 스크롤이 있든 없든 스크롤바 폭만큼 여백을 확보(모바일 메뉴 열릴 시 화면 밀림 방지 하기 위함) */
+
+body {
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
