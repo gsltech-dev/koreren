@@ -186,7 +186,7 @@ export default function Header() {
                   `}
                 >
                   <li>
-                    <a href="#" className="block py-5 hover:text-blue-400">
+                    <a href="notice" className="block py-5 hover:text-blue-400">
                       NOTICE
                     </a>
                   </li>
