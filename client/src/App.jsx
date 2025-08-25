@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 // 페이지 컴포넌트
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Notice from "./pages/Notice";
 import Detail from "./pages/Detail";
 // 필요한 페이지 추가 import...
 
@@ -32,8 +31,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-
-          <Route path="/notice" element={<Notice />} />
 
           <Route path="/detail" element={<Detail />} />
 

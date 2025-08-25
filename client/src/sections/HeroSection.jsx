@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import useCarousel from "../hooks/useCarousel";
 
-import main1 from "../assets/images/main/bg_5.jpg";
+import main1 from "../assets/images/main/bg_1.jpg";
 import main2 from "../assets/images/main/bg_2.jpg";
 import main3 from "../assets/images/main/bg_3.jpg";
 import main4 from "../assets/images/main/bg_4.jpg";
@@ -16,7 +16,7 @@ import mainM2 from "../assets/images/main/main_m_2.jpg";
 import mainM3 from "../assets/images/main/main_m_3.jpg";
 import mainM4 from "../assets/images/main/main_m_4.jpg";
 
-// 기본은 모바일 이미지
+// 기본은 모바일 이미지b
 const slides = [mainM1, mainM2, mainM3, mainM4];
 // lg(1024px~)에서 쓸 데스크톱 이미지 (순서 1:1 매칭)
 const slidesLg = [main1, main2, main3, main4];
@@ -75,14 +75,14 @@ export default function HeroSection() {
       <button
         onClick={prev}
         aria-label="Previous"
-        className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 text-white z-20"
+        className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 text-[#b3b3b3] z-20"
       >
         <FontAwesomeIcon icon={faChevronLeft} size="2xl" />
       </button>
       <button
         onClick={next}
         aria-label="Next"
-        className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 text-white z-20"
+        className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 text-[#b3b3b3] z-20"
       >
         <FontAwesomeIcon icon={faChevronRight} size="2xl" />
       </button>
@@ -97,7 +97,7 @@ export default function HeroSection() {
             className={`h-2.5 w-2.5 rounded-full transition
               ${
                 i === dotIndex
-                  ? "bg-white shadow ring-1 ring-black/10 scale-110"
+                  ? "bg-[#b3b3b3] shadow ring-1 ring-black/10 scale-110"
                   : "bg-white/50 hover:bg-white/80"
               }`}
           />
