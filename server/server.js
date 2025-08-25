@@ -29,7 +29,9 @@ app.use(cors({ origin: ALLOWED_ORIGIN }));
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.get("/healthz", (_req, res) => res.json({ ok: true }));
+app.get("/healthz", (_req, res) => {
+  res.status(200).type("text").send("ok");
+});
 
 app.get("/", (_req, res) => {
   res.send("반갑다");
@@ -51,4 +53,19 @@ app.get("/test-db", async (_req, res) => {
     .limit(1);
   if (error) return res.status(500).json({ error: error.message });
   res.json(data);
+});
+
+app.get("/notices", async (_req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from("notices")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch notices" });
+  }
 });
