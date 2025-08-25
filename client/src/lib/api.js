@@ -1,10 +1,12 @@
-const BASE = import.meta.env.VITE_API_BASE;
+// src/lib/api.js
+import { sb } from "../lib/supabase";
 
 export async function getNotices() {
-  const res = await fetch(`${BASE}/notices`);
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`HTTP ${res.status} ${text}`);
-  }
-  return res.json();
+  const { data, error } = await sb
+    .from("notices")
+    .select("id, title, name, created_at")
+    .order("id", { ascending: false })
+    .limit(20);
+  if (error) throw error;
+  return data;
 }

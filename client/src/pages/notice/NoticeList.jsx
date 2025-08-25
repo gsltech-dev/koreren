@@ -10,12 +10,10 @@ export default function NoticeList() {
     (async () => {
       try {
         const data = await getNotices();
-        // 서버: [{id, name, title, body, created_at, updated_at}]
-        // 테이블에 맞추어 가공
         const mapped = data.map((n, i) => ({
           no: data.length - i, // 최신이 위로
           title: n.title,
-          href: `/notices/${n.id}`, // 상세 라우트 대비
+          href: `/notices/${n.id}`,
           author: n.name,
         }));
         setRows(mapped);
@@ -27,7 +25,18 @@ export default function NoticeList() {
     })();
   }, []);
 
-  if (loading) return <div className="p-6">로딩...</div>;
+  if (loading) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-12">
+        <div className="animate-pulse space-y-4">
+          <div className="h-6 bg-gray-200 rounded w-1/3"></div>
+          <div className="h-4 bg-gray-200 rounded"></div>
+          <div className="h-4 bg-gray-200 rounded"></div>
+          <div className="h-4 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    );
+  }
   if (err) return <div className="p-6 text-red-500">{err}</div>;
 
   const pages = [1, 2, 3, 4]; // TODO: 서버 페이지네이션 붙이면 교체
