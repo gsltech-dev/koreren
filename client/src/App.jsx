@@ -14,6 +14,8 @@ import Notice from "./pages/Notice";
 import Detail from "./pages/Detail";
 // 필요한 페이지 추가 import...
 
+import NoticeList from "./pages/NoticeList";
+
 function App() {
   useLenis({
     duration: 1.0, // 전체 스크롤 체감 속도
@@ -32,6 +34,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/notice" element={<Notice />} />
           <Route path="/detail" element={<Detail />} />
+          <Route path="/notices" element={<NoticeList />} />
         </Routes>
         <Footer />
       </div>

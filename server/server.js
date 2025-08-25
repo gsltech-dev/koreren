@@ -55,6 +55,22 @@ app.get("/test-db", async (_req, res) => {
   res.json(data);
 });
 
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGIN || "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+app.use(
+  cors({
+    origin(origin, cb) {
+      // 서버-서버 호출 등 Origin 없는 경우 허용
+      if (!origin) return cb(null, true);
+      if (ALLOWED_ORIGINS.includes(origin)) return cb(null, true);
+      cb(new Error("Not allowed by CORS"));
+    },
+  })
+);
+
 app.get("/notices", async (_req, res) => {
   try {
     const { data, error } = await supabase
