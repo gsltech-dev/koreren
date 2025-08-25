@@ -1,8 +1,10 @@
-// client/src/lib/api.js
-const BASE = import.meta.env.VITE_API_BASE; // 예: https://koreren-server.onrender.com
+const BASE = import.meta.env.VITE_API_BASE;
 
 export async function getNotices() {
   const res = await fetch(`${BASE}/notices`);
-  if (!res.ok) throw new Error(`Failed: ${res.status}`);
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`HTTP ${res.status} ${text}`);
+  }
   return res.json();
 }
