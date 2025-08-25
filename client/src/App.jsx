@@ -14,7 +14,7 @@ import Notice from "./pages/Notice";
 import Detail from "./pages/Detail";
 // 필요한 페이지 추가 import...
 
-import NoticeList from "./pages/NoticeList";
+import NoticeList from "./pages/notice/NoticeList";
 
 function App() {
   useLenis({
@@ -32,9 +32,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+
           <Route path="/notice" element={<Notice />} />
+
           <Route path="/detail" element={<Detail />} />
+
           <Route path="/notices" element={<NoticeList />} />
+          {/* <Route path="/notices/:id" element={<NoticeDetail />} /> */}
         </Routes>
         <Footer />
       </div>

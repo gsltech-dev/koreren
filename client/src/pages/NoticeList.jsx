@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getNotices } from "../lib/api"; // 별칭 안 쓴다면 상대경로
+import { getNotices } from "../lib/api";
 
 export default function NoticeList() {
   const [notices, setNotices] = useState([]);
