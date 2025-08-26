@@ -99,7 +99,7 @@ export default function Header() {
                   href="#"
                   className="h-full flex items-center text-xl font-semibold hover:text-blue-500 transition-colors"
                 >
-                  BRANDDD
+                  BRAND
                 </a>
 
                 {/* 위치/스타일 그대로, 표시만 isGnbOpen으로 제어 */}

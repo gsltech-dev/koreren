@@ -1,15 +1,72 @@
-/* index.css */
 @import "tailwindcss";
 
-/* src/index.css 등 전역 */
+/* 스크롤 유무에 따라 레이아웃 흔들림 방지 */
 html {
   scrollbar-gutter: stable;
-} /* 스크롤이 있든 없든 스크롤바 폭만큼 여백을 확보(모바일 메뉴 열릴 시 화면 밀림 방지 하기 위함) */
-
-body {
-  margin: 0;
 }
 
-div {
+/* 레이아웃 기본값 */
+html,
+body,
+#root {
+  height: 100%;
+} /* 푸터 바닥 정렬용 */
+body {
+  margin: 0;
+  overflow-x: hidden; /* 오른쪽 여백/가로 스크롤 방지 */
+}
+
+/* 박스 사이징은 전역으로 통일 (div만 말고 전체) */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+/* 리치 텍스트(공지 본문) 안전장치 */
+.prose img,
+.prose video,
+.prose table {
+  max-width: 100%;
+  height: auto;
+}
+.prose {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* tiptap 기본 블록 간격 */
+.tiptap p {
+  margin: 0.5rem 0;
+}
+.tiptap h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+}
+.tiptap h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0.875rem 0 0.5rem;
+}
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+.tiptap blockquote {
+  border-left: 3px solid #e5e7eb;
+  padding-left: 0.75rem;
+  color: #374151;
+  margin: 0.75rem 0;
+}
+.tiptap pre {
+  padding: 0.75rem;
+  background: #0f172a;
+  color: #e5e7eb;
+  border-radius: 0.375rem;
+  overflow: auto;
+}
+.tiptap u {
+  text-underline-offset: 2px;
 }

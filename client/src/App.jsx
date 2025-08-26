@@ -14,6 +14,8 @@ import Detail from "./pages/Detail";
 // 필요한 페이지 추가 import...
 
 import NoticeList from "./pages/notice/NoticeList";
+import NoticeDetail from "./pages/notice/NoticeDetail";
+import NoticeWrite from "./pages/notice/NoticeWrite";
 
 function App() {
   useLenis({
@@ -25,18 +27,20 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-dvh">
         <Header />
+        <main className="flex-1 overflow-x-hidden">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+            <Route path="/detail" element={<Detail />} />
 
-          <Route path="/detail" element={<Detail />} />
-
-          <Route path="/notices" element={<NoticeList />} />
-          {/* <Route path="/notices/:id" element={<NoticeDetail />} /> */}
-        </Routes>
+            <Route path="/notices" element={<NoticeList />} />
+            <Route path="/notices/:id" element={<NoticeDetail />} />
+            <Route path="/notices/write" element={<NoticeWrite />} />
+          </Routes>
+        </main>
         <Footer />
       </div>
     </BrowserRouter>
