@@ -66,3 +66,15 @@ function normalizeFilesObject(files) {
   const arr = Object.values(files).flat();
   return Array.isArray(arr) ? arr : [arr];
 }
+
+// delete
+export async function remove(req, res, next) {
+  try {
+    const id = Number(req.params.id);
+    if (!Number.isFinite(id)) throw new Error("invalid id");
+    await svc.removeNotice(id);
+    res.json({ ok: true });
+  } catch (e) {
+    next(e);
+  }
+}

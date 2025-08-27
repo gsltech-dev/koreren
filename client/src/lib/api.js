@@ -128,22 +128,40 @@ export async function createNotice({ title, name, body }) {
 }
 
 // 이미지 업로드
+// export async function uploadImageToStorage(file) {
+//   const safe = file.name.replace(/[^\w.\-]/g, "_");
+//   const path = `images/${Date.now()}_${safe}`;
+//   const { data, error } = await sb.storage.from("notices").upload(path, file, {
+//     upsert: false,
+//     cacheControl: "3600",
+//     contentType: file.type,
+//   });
+//   if (error) throw error;
+
+//   const { data: pub, error: pubErr } = sb.storage
+//     .from("notices")
+//     .getPublicUrl(data.path);
+//   if (pubErr) throw pubErr;
+
+//   return pub.publicUrl; // https://.../object/public/notices/images...
+// }
 export async function uploadImageToStorage(file) {
-  const safe = file.name.replace(/[^\w.\-]/g, "_");
-  const path = `notice/${Date.now()}_${safe}`;
+  const base =
+    file.name.replace(/\.[^.]+$/g, "").replace(/[^\w\-]/g, "") || "image";
+  const path = `images/${Date.now()}_${base}.${
+    file.type?.split("/")[1] || "bin"
+  }`;
   const { data, error } = await sb.storage.from("notices").upload(path, file, {
     upsert: false,
     cacheControl: "3600",
-    contentType: file.type,
+    contentType: file.type || "application/octet-stream",
   });
   if (error) throw error;
-
   const { data: pub, error: pubErr } = sb.storage
     .from("notices")
     .getPublicUrl(data.path);
   if (pubErr) throw pubErr;
-
-  return pub.publicUrl; // https://.../object/public/notices/...
+  return pub.publicUrl; // 항상 '/object/public/notices/images/...' 형태
 }
 
 export async function createNoticeViaServerMultipart(formData) {

@@ -23,13 +23,11 @@ export async function removeFromNotices(pathsOrUrls = []) {
     .filter((p) => p && typeof p === "string");
 
   if (!paths.length) {
-    console.log("[storage.remove] nothing to remove");
     return;
   }
 
-  console.log("[storage.remove] try remove:", paths);
   const { data, error } = await sb.storage.from(BUCKET).remove(paths);
-  console.log("[storage.remove] result:", { data, error });
+
   if (error) throw error;
 }
 
@@ -41,5 +39,6 @@ export async function uploadBufferToNotices(path, buffer, contentType) {
   });
   if (error) throw error;
   const { data } = sb.storage.from(BUCKET).getPublicUrl(path);
+
   return { path, publicUrl: data.publicUrl };
 }

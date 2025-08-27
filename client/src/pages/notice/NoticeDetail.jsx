@@ -1,7 +1,7 @@
 // src/pages/notice/NoticeDetail.jsx
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { getNotice } from "../../lib/api";
+import { getNotice, deleteNoticeViaServer } from "../../lib/api";
 
 export default function NoticeDetail() {
   const { id } = useParams();
@@ -11,6 +11,7 @@ export default function NoticeDetail() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     if (!Number.isFinite(numId)) {
@@ -28,6 +29,19 @@ export default function NoticeDetail() {
       }
     })();
   }, [numId, navigate]);
+
+  async function handleDelete() {
+    if (!window.confirm("정말 삭제하시겠습니까?")) return;
+    try {
+      setDeleting(true);
+      await deleteNoticeViaServer(numId);
+      navigate("/notices");
+    } catch (e) {
+      alert(e.message || "삭제 실패");
+    } finally {
+      setDeleting(false);
+    }
+  }
 
   if (loading) {
     return (
@@ -73,6 +87,13 @@ export default function NoticeDetail() {
         />
 
         <div className="mt-10 flex justify-end">
+          <button
+            onClick={handleDelete}
+            disabled={deleting}
+            className="ml-2 inline-flex items-center justify-center border border-red-300 text-red-600 px-12 h-10 rounded text-sm hover:bg-red-50 disabled:opacity-50"
+          >
+            삭제
+          </button>
           <Link
             to={`/notices/${item.id}/update`}
             className="inline-flex items-center justify-center border border-gray-300 px-12 h-10 rounded text-sm hover:bg-gray-50"

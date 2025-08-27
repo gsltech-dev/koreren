@@ -63,3 +63,9 @@ export async function updateOne(id, { title, name, body }) {
   const { error } = await sb.from("notices").update(fields).eq("id", id);
   if (error) throw error;
 }
+
+// delete
+export async function deleteOne(id) {
+  const { error } = await sb.from("notices").delete().eq("id", id);
+  if (error) throw error;
+}

@@ -4,8 +4,11 @@ import { toWebpResized } from "../utils/image-process.js";
 import { sanitizeFilename, nowStamp } from "../utils/path-helpers.js";
 import * as noticeModel from "../models/notices.model.js";
 import * as imageModel from "../models/notice_images.model.js";
-import { uploadBufferToNotices } from "./storage.service.js";
-import { removeFromNotices } from "./storage.service.js";
+import {
+  toBucketPath,
+  removeFromNotices,
+  uploadBufferToNotices,
+} from "./storage.service.js";
 
 /* 목록 */
 export async function listNotices() {
@@ -60,12 +63,13 @@ export async function updateWithImages(id, { payload, fileList }) {
     body: finalHtml,
   });
 
+  // 새로 올라온 파일 매핑 추가
   if (uploaded.length) {
     const exists = await imageModel.listByNoticeId(id);
     const baseOrder = exists.length;
     const rows = uploaded.map((u, i) => ({
       notice_id: id,
-      file_path: u.path,
+      file_path: u.path, // ← DB에는 항상 images/.. 경로 저장
       byte_size: u.size ?? null,
       mime_type: u.mime ?? null,
       sort_order: baseOrder + i,
@@ -74,19 +78,48 @@ export async function updateWithImages(id, { payload, fileList }) {
     if (error) throw error;
   }
 
-  // 본문에 더 이상 안 쓰이는 파일 경로들
-  const existsNow = await imageModel.listByNoticeId(id);
+  // ── 여기만 변경 ───────────────────────────────────────────
+  // 1) 본문에서 사용 중인 이미지들의 "경로(images/...)" 집합 만들기
+  const usedPaths = new Set(
+    Array.from(finalHtml.matchAll(/https?:\/\/[^\s"')]+/g))
+      .map((m) => toBucketPath(m[0])) // 공개 URL → images/.. 로 정규화
+      .filter(Boolean)
+  );
+
+  // 2) DB에 있는 경로 중 본문에 더 이상 안 쓰이는 것만 추려서 삭제
+  const existsNow = await imageModel.listByNoticeId(id); // [{file_path,...}]
   const removed = existsNow
-    .filter((row) => !finalHtml.includes(row.file_path))
-    .map((row) => row.file_path);
+    .map((r) => r.file_path) // images/..
+    .filter((p) => !usedPaths.has(p));
 
   if (removed.length) {
     console.log("[notice.update] to remove:", removed);
-    await imageModel.deleteByNoticeIdAndPaths(id, removed);
-    await removeFromNotices(removed); // 여기 주석 해제
+    await imageModel.deleteByNoticeIdAndPaths(id, removed); // 매핑 삭제
+    await removeFromNotices(removed); // 스토리지 삭제
   }
+  // ──────────────────────────────────────────────────────────
 
   return { id, body: finalHtml };
+}
+
+//  삭제 (본문/매핑/스토리지 함께 정리)
+export async function removeNotice(id) {
+  // 1) 현재 연결된 이미지 경로 수집
+  const imgs = await imageModel.listByNoticeId(id);
+  const paths = imgs.map((i) => i.file_path);
+
+  // 2) 매핑 삭제
+  if (paths.length) {
+    await imageModel.deleteByNoticeIdAndPaths(id, paths);
+  }
+
+  // 3) 본문(공지) 삭제
+  await noticeModel.deleteOne(id);
+
+  // 4) 스토리지 삭제 (경로 기준, 버킷: notices)
+  if (paths.length) {
+    await removeFromNotices(paths);
+  }
 }
 
 /* -------------------- 공통: 이미지 업로드 + 본문 치환 -------------------- */
