@@ -1,7 +1,37 @@
 // src/lib/api.js
 import { sb } from "../lib/supabase";
 
-// 목록: 페이지네이션 + 검색 (안전 가드 버전)
+const API = import.meta.env.VITE_API_BASE || "http://localhost:8080";
+
+export async function createNoticeViaServer(payload) {
+  const r = await fetch(`${API}/notices`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const j = await r.json();
+  if (!r.ok || !j.ok) throw new Error(j.error?.message || "생성 실패");
+  return j.data; // { id }
+}
+
+export async function updateNoticeViaServer(id, patch) {
+  const r = await fetch(`${API}/notices/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(patch),
+  });
+  const j = await r.json();
+  if (!r.ok || !j.ok) throw new Error(j.error?.message || "수정 실패");
+  return j.data;
+}
+
+export async function deleteNoticeViaServer(id) {
+  const r = await fetch(`${API}/notices/${id}`, { method: "DELETE" });
+  const j = await r.json();
+  if (!r.ok || !j.ok) throw new Error(j.error?.message || "삭제 실패");
+}
+
+// list: 페이지네이션 + 검색 (안전 가드 버전)
 export async function getNotices({
   page = 1,
   pageSize = 10,
@@ -95,4 +125,40 @@ export async function createNotice({ title, name, body }) {
 
   if (error) throw error;
   return data; // { id }
+}
+
+// 이미지 업로드
+export async function uploadImageToStorage(file) {
+  const safe = file.name.replace(/[^\w.\-]/g, "_");
+  const path = `notice/${Date.now()}_${safe}`;
+  const { data, error } = await sb.storage.from("notices").upload(path, file, {
+    upsert: false,
+    cacheControl: "3600",
+    contentType: file.type,
+  });
+  if (error) throw error;
+
+  const { data: pub, error: pubErr } = sb.storage
+    .from("notices")
+    .getPublicUrl(data.path);
+  if (pubErr) throw pubErr;
+
+  return pub.publicUrl; // https://.../object/public/notices/...
+}
+
+export async function createNoticeViaServerMultipart(formData) {
+  const r = await fetch(`${API}/notices`, { method: "POST", body: formData });
+  const j = await r.json();
+  if (!r.ok || !j.ok) throw new Error(j.error?.message || "생성 실패");
+  return j.data; // { id, body }
+}
+
+export async function updateNotice(id, formData) {
+  const r = await fetch(`${API}/notices/${id}`, {
+    method: "PATCH",
+    body: formData,
+  });
+  const j = await r.json();
+  if (!r.ok || !j.ok) throw new Error(j.error?.message || "수정 실패");
+  return j.data; // { id, body }
 }

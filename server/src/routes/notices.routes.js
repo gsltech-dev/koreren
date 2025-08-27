@@ -1,6 +1,9 @@
 import { Router } from "express";
-import { list } from "../controllers/notices.controller.js";
+import * as ctrl from "../controllers/notices.controller.js";
 
 const r = Router();
-r.get("/", list); // READ only
+r.get("/", ctrl.list); //리스트
+r.get("/:id", ctrl.detail); //상세
+r.post("/", ctrl.create); //생성
+r.patch("/:id", ctrl.update); //수정
 export default r;

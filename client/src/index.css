@@ -7,10 +7,13 @@ html {
 
 /* 레이아웃 기본값 */
 html,
-body,
+body {
+  height: auto;
+  min-height: 100%;
+}
 #root {
-  height: 100%;
-} /* 푸터 바닥 정렬용 */
+  min-height: 100%;
+}
 body {
   margin: 0;
   overflow-x: hidden; /* 오른쪽 여백/가로 스크롤 방지 */
@@ -49,10 +52,16 @@ body {
   font-weight: 700;
   margin: 0.875rem 0 0.5rem;
 }
-.tiptap ul,
-.tiptap ol {
+.tiptap ul {
+  list-style-type: disc;
   padding-left: 1.25rem;
-  margin: 0.5rem 0;
+}
+.tiptap ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+}
+.tiptap li {
+  list-style-position: outside;
 }
 .tiptap blockquote {
   border-left: 3px solid #e5e7eb;
@@ -69,4 +78,34 @@ body {
 }
 .tiptap u {
   text-underline-offset: 2px;
+}
+
+.tiptap .ProseMirror {
+  outline: none;
+}
+.tiptap .ProseMirror:focus {
+  outline: none;
+}
+.tiptap .ProseMirror:focus-visible {
+  outline: none;
+} /* 사파리/크롬 대비 */
+
+/* TipTap TextAlign이 넣는 style을 블록 이미지 정렬로 해석 */
+.tiptap img[style*="text-align: center"],
+.prose img[style*="text-align: center"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tiptap img[style*="text-align: right"],
+.prose img[style*="text-align: right"] {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+.tiptap img[style*="text-align: left"],
+.prose img[style*="text-align: left"] {
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
 }

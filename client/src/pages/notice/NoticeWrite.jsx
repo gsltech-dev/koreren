@@ -1,17 +1,30 @@
+// src/pages/notice/NoticeWrite.jsx
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEditor, EditorContent, EditorContext } from "@tiptap/react";
+import {
+  useEditor,
+  EditorContent,
+  EditorContext,
+  useCurrentEditor,
+} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
 import Highlight from "@tiptap/extension-highlight";
-import { createNotice } from "../../lib/api";
 import Underline from "@tiptap/extension-underline";
+import TextAlign from "@tiptap/extension-text-align";
+import Image from "@tiptap/extension-image";
+import Dropcursor from "@tiptap/extension-dropcursor";
+import Gapcursor from "@tiptap/extension-gapcursor";
+import { createNoticeViaServerMultipart } from "../../lib/api";
 
 export default function NoticeWrite() {
   const nav = useNavigate();
   const [title, setTitle] = useState("");
   const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [pending, setPending] = useState([]); // [{ file, blob, token }]
+  const newToken = () =>
+    "img-" + Math.random().toString(36).slice(2, 10) + Date.now();
 
   const editor = useEditor({
     extensions: [
@@ -19,11 +32,37 @@ export default function NoticeWrite() {
       Highlight,
       Placeholder.configure({ placeholder: "내용을 입력하세요..." }),
       Underline,
+      TextAlign.configure({ types: ["heading", "paragraph", "image"] }),
+      Dropcursor,
+      Gapcursor,
+      Image.configure({ inline: false, allowBase64: false }),
     ],
     content: "<p></p>",
     immediatelyRender: false,
     autofocus: true,
   });
+
+  const onPick = (e) => {
+    const f = e.target.files?.[0];
+    if (!f) return;
+    if (!/^image\//.test(f.type)) return alert("이미지 파일만 허용");
+    if (f.size > 5 * 1024 * 1024) return alert("최대 5MB");
+
+    const blob = URL.createObjectURL(f);
+    const token = newToken(); // 서버로 보낼 식별자
+
+    editor
+      .chain()
+      .focus()
+      .insertContent([
+        { type: "image", attrs: { src: blob, alt: f.name } },
+        { type: "paragraph" },
+      ])
+      .focus("end") // 방금 생성한 문단으로 커서 이동
+      .run();
+    setPending((a) => [...a, { file: f, blob, token }]);
+    e.target.value = "";
+  };
 
   const providerValue = useMemo(() => ({ editor }), [editor]);
 
@@ -41,11 +80,23 @@ export default function NoticeWrite() {
 
     setSubmitting(true);
     try {
-      const { id } = await createNotice({
-        title: title.trim(),
-        name: name.trim(),
-        body: html,
-      });
+      const html = editor.getHTML();
+
+      const fd = new FormData();
+      fd.append(
+        "payload",
+        JSON.stringify({
+          title: title.trim(),
+          name: name.trim(),
+          bodyHtmlWithBlobUrls: html,
+          // 에디터에 붙여둔 blob URL들과 파일을 매칭하기 위한 토큰 목록
+          images: pending.map((p) => ({ blob: p.blob, token: p.token })),
+        })
+      );
+      // 실제 파일들. name=token 으로 보내 서버가 위 토큰과 매칭
+      pending.forEach((p) => fd.append("files[]", p.file, p.token));
+
+      const { id } = await createNoticeViaServerMultipart(fd);
       nav(`/notices/${id}`);
     } catch (err) {
       alert(err.message || "저장 실패");
@@ -76,9 +127,15 @@ export default function NoticeWrite() {
 
         <EditorContext.Provider value={providerValue}>
           <div className="border rounded">
-            <Toolbar />
-            <div className="prose max-w-none p-3 tiptap">
-              <EditorContent editor={editor} />
+            <Toolbar onPick={onPick} />
+            <div
+              className="p-3 h-[40vh] overflow-y-auto cursor-text"
+              onClick={() => editor?.commands.focus()}
+            >
+              <EditorContent
+                editor={editor}
+                className="prose max-w-none tiptap"
+              />
             </div>
           </div>
         </EditorContext.Provider>
@@ -122,8 +179,7 @@ function Btn({ on, active, disabled, label }) {
   );
 }
 
-import { useCurrentEditor } from "@tiptap/react";
-function Toolbar() {
+function Toolbar({ onPick }) {
   const { editor } = useCurrentEditor();
   if (!editor) return null;
 
@@ -131,20 +187,21 @@ function Toolbar() {
     <div className="flex flex-wrap gap-2 p-2 border-b bg-gray-50">
       <HeadingBtn level={1} />
       <HeadingBtn level={2} />
+
       <Btn
-        label="굵게"
+        label="B"
         on={() => editor.chain().focus().toggleBold().run()}
         active={editor.isActive("bold")}
         disabled={!editor.can().chain().focus().toggleBold().run()}
       />
       <Btn
-        label="기울임"
+        label="I"
         on={() => editor.chain().focus().toggleItalic().run()}
         active={editor.isActive("italic")}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
       />
       <Btn
-        label="취소선"
+        label="S"
         on={() => editor.chain().focus().toggleStrike().run()}
         active={editor.isActive("strike")}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
@@ -168,21 +225,46 @@ function Toolbar() {
         disabled={!editor.can().chain().focus().toggleOrderedList().run()}
       />
       <Btn
-        label="코드블록"
+        label="왼쪽"
+        on={() => editor.chain().focus().setTextAlign("left").run()}
+        active={editor.isActive({ textAlign: "left" })}
+      />
+      <Btn
+        label="가운데"
+        on={() => editor.chain().focus().setTextAlign("center").run()}
+        active={editor.isActive({ textAlign: "center" })}
+      />
+      <Btn
+        label="오른쪽"
+        on={() => editor.chain().focus().setTextAlign("right").run()}
+        active={editor.isActive({ textAlign: "right" })}
+      />
+      <Btn
+        label="</>"
         on={() => editor.chain().focus().toggleCodeBlock().run()}
         active={editor.isActive("codeBlock")}
         disabled={!editor.can().chain().focus().toggleCodeBlock().run()}
       />
       <Btn
-        label="되돌리기"
+        label="<"
         on={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().chain().focus().undo().run()}
       />
       <Btn
-        label="앞으로"
+        label=">"
         on={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
       />
+
+      <label className="px-2 py-1 text-sm border rounded cursor-pointer">
+        이미지
+        <input
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={onPick}
+        />
+      </label>
     </div>
   );
 }

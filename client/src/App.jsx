@@ -16,6 +16,7 @@ import Detail from "./pages/Detail";
 import NoticeList from "./pages/notice/NoticeList";
 import NoticeDetail from "./pages/notice/NoticeDetail";
 import NoticeWrite from "./pages/notice/NoticeWrite";
+import NoticeUpdate from "./pages/notice/NoticeUpdate";
 
 function App() {
   useLenis({
@@ -39,6 +40,7 @@ function App() {
             <Route path="/notices" element={<NoticeList />} />
             <Route path="/notices/:id" element={<NoticeDetail />} />
             <Route path="/notices/write" element={<NoticeWrite />} />
+            <Route path="/notices/:id/update" element={<NoticeUpdate />} />
           </Routes>
         </main>
         <Footer />

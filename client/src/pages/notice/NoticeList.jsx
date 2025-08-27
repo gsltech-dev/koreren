@@ -102,37 +102,52 @@ export default function NoticeList() {
         </table>
       </section>
       {/* 검색 */}
-      <form className="mt-8 mb-6 flex gap-2" onSubmit={onSearch}>
-        {/* 날짜 선택 드롭다운 */}
-        <select
-          value={range}
-          onChange={(e) =>
-            setSp({ page: "1", field, q, range: e.target.value })
-          }
-          className="h-10 rounded border px-3 text-sm"
-        >
-          <option value="all">전체</option>
-          <option value="week">일주일</option>
-          <option value="month">한달</option>
-          <option value="month3">세달</option>
-        </select>
+      <form
+        className="mt-8 mb-6 flex items-center justify-between gap-3"
+        onSubmit={onSearch}
+      >
+        {/* 왼쪽: 검색 */}
+        <div className="flex gap-2">
+          <select
+            value={range}
+            onChange={(e) =>
+              setSp({ page: "1", field, q, range: e.target.value })
+            }
+            className="h-10 rounded border px-3 text-sm"
+          >
+            <option value="all">전체</option>
+            <option value="week">일주일</option>
+            <option value="month">한달</option>
+            <option value="month3">세달</option>
+          </select>
 
-        <select
-          name="field"
-          defaultValue={field}
-          className="h-10 rounded border px-3 text-sm"
+          <select
+            name="field"
+            defaultValue={field}
+            className="h-10 rounded border px-3 text-sm"
+          >
+            <option value="title">제목</option>
+            <option value="body">내용</option>
+            <option value="name">작성자</option>
+          </select>
+
+          <input
+            name="q"
+            defaultValue={q}
+            placeholder="검색어"
+            className="h-10 min-w-[220px] rounded border px-3 text-sm"
+          />
+
+          <button className="h-10 rounded border px-4 text-sm">찾기</button>
+        </div>
+
+        {/* 오른쪽: 글작성 */}
+        <a
+          href="/notices/write"
+          className="h-10 inline-flex items-center rounded border px-4 text-sm"
         >
-          <option value="title">제목</option>
-          <option value="body">내용</option>
-          <option value="name">작성자</option>
-        </select>
-        <input
-          name="q"
-          defaultValue={q}
-          placeholder="검색어"
-          className="h-10 min-w-[220px] rounded border px-3 text-sm"
-        />
-        <button className="h-10 rounded border px-4 text-sm">찾기</button>
+          글작성
+        </a>
       </form>
       {/* 페이지네이션 */}
       <nav className="mt-8" aria-label="페이지네이션">

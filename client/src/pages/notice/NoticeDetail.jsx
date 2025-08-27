@@ -63,16 +63,22 @@ export default function NoticeDetail() {
 
         <article
           className="
-            min-h-[280px] py-10
-            prose prose-neutral max-w-none
-            [&_*]:max-w-full
-            prose-img:mx-auto prose-img:h-auto prose-img:max-w-full
-            prose-table:w-full prose-table:overflow-x-auto
-          "
+    min-h-[280px] py-10
+    prose prose-neutral max-w-none
+    [&_*]:max-w-full
+    prose-img:block prose-img:mx-auto prose-img:h-auto prose-img:w-auto
+    prose-table:w-full prose-table:overflow-x-auto
+  "
           dangerouslySetInnerHTML={{ __html: item.body || "" }}
         />
 
         <div className="mt-10 flex justify-end">
+          <Link
+            to={`/notices/${item.id}/update`}
+            className="inline-flex items-center justify-center border border-gray-300 px-12 h-10 rounded text-sm hover:bg-gray-50"
+          >
+            수정
+          </Link>
           <Link
             to="/notices"
             className="inline-flex items-center justify-center border border-gray-300 px-12 h-10 rounded text-sm hover:bg-gray-50"

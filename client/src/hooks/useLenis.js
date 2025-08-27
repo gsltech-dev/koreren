@@ -23,7 +23,7 @@ export default function useLenis(options = {}) {
     if (reduceMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.1, // 관성 길이(감속) 0.8~1.5 추천
+      duration: 0.8, // 관성 길이(감속) 0.8~1.5 추천
       smoothWheel: true, // 휠 부드럽게
       smoothTouch: true, // 터치 부드럽게
       touchMultiplier: 1.2,
