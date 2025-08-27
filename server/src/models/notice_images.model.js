@@ -19,3 +19,13 @@ export async function listByNoticeId(notice_id) {
   if (error) throw error;
   return data ?? [];
 }
+
+export async function deleteByNoticeIdAndPaths(notice_id, paths = []) {
+  if (!paths.length) return;
+  const { error } = await sb
+    .from("notice_images")
+    .delete()
+    .eq("notice_id", notice_id)
+    .in("file_path", paths);
+  if (error) throw error;
+}

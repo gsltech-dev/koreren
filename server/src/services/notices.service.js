@@ -5,6 +5,7 @@ import { sanitizeFilename, nowStamp } from "../utils/path-helpers.js";
 import * as noticeModel from "../models/notices.model.js";
 import * as imageModel from "../models/notice_images.model.js";
 import { uploadBufferToNotices } from "./storage.service.js";
+import { removeFromNotices } from "./storage.service.js";
 
 /* 목록 */
 export async function listNotices() {
@@ -71,6 +72,18 @@ export async function updateWithImages(id, { payload, fileList }) {
     }));
     const { error } = await imageModel.insertMany(rows);
     if (error) throw error;
+  }
+
+  // 본문에 더 이상 안 쓰이는 파일 경로들
+  const existsNow = await imageModel.listByNoticeId(id);
+  const removed = existsNow
+    .filter((row) => !finalHtml.includes(row.file_path))
+    .map((row) => row.file_path);
+
+  if (removed.length) {
+    console.log("[notice.update] to remove:", removed);
+    await imageModel.deleteByNoticeIdAndPaths(id, removed);
+    await removeFromNotices(removed); // 여기 주석 해제
   }
 
   return { id, body: finalHtml };

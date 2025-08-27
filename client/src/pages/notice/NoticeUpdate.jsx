@@ -1,6 +1,6 @@
 // src/pages/notice/NoticeUpdate.jsx
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useEditor,
   EditorContent,
@@ -19,13 +19,15 @@ import { getNotice, updateNotice } from "../../lib/api";
 
 export default function NoticeUpdate() {
   const { id } = useParams();
-  const numId = Number(id);
+  const numId = Number.parseInt(id, 10);
   const nav = useNavigate();
 
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState("");
   const [title, setTitle] = useState("");
   const [name, setName] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [pending, setPending] = useState([]); // 새로 추가하는 파일만
+  const [pending, setPending] = useState([]); // [{ file, blob, token }]
+
   const newToken = () =>
     "img-" + Math.random().toString(36).slice(2, 10) + Date.now();
 
@@ -45,19 +47,26 @@ export default function NoticeUpdate() {
     autofocus: true,
   });
 
+  // 초기 데이터 로드
   useEffect(() => {
+    if (!Number.isFinite(numId)) {
+      nav("/notices", { replace: true });
+      return;
+    }
     (async () => {
       try {
         const data = await getNotice(numId);
-        setTitle(data.title || "");
-        setName(data.name || "");
-        editor?.commands.setContent(data.body || "<p></p>", false);
+        setTitle(data.title ?? "");
+        setName(data.name ?? "");
+        // 에디터 HTML 주입
+        if (editor) editor.commands.setContent(data.body || "<p></p>", false);
       } catch (e) {
-        alert(e.message || "불러오기 실패");
-        nav(`/notices/${numId}`);
+        setErr(e.message || "불러오기 실패");
+      } finally {
+        setLoading(false);
       }
     })();
-  }, [numId, editor, nav]);
+  }, [numId, nav, editor]);
 
   const onPick = (e) => {
     const f = e.target.files?.[0];
@@ -84,15 +93,18 @@ export default function NoticeUpdate() {
 
   const providerValue = useMemo(() => ({ editor }), [editor]);
 
-  const onSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!editor) return;
+
+    const html = editor.getHTML();
+    const isEmpty =
+      editor.state.doc.textContent.trim().length === 0 || html === "<p></p>";
     if (!title.trim()) return alert("제목을 입력하세요.");
     if (!name.trim()) return alert("작성자를 입력하세요.");
+    if (isEmpty) return alert("내용을 입력하세요.");
 
-    setSubmitting(true);
     try {
-      const html = editor.getHTML();
       const fd = new FormData();
       fd.append(
         "payload",
@@ -105,30 +117,42 @@ export default function NoticeUpdate() {
       );
       pending.forEach((p) => fd.append("files[]", p.file, p.token));
 
-      await updateNotice(numId, fd);
-      nav(`/notices/${numId}`);
-    } catch (err) {
-      alert(err.message || "수정 실패");
-    } finally {
-      setSubmitting(false);
+      const { id: updatedId } = await updateNotice(numId, fd);
+      nav(`/notices/${updatedId}`);
+    } catch (error) {
+      alert(error.message || "수정 실패");
     }
-  };
+  }
 
+  if (loading) {
+    return (
+      <div className="mx-auto max-w-5xl px-6 py-14">
+        <div className="animate-pulse space-y-6">
+          <div className="h-7 bg-gray-200 rounded w-28 mx-auto" />
+          <div className="h-px bg-gray-200" />
+          <div className="h-6 bg-gray-200 rounded w-2/3" />
+          <div className="h-4 bg-gray-200 rounded w-24" />
+          <div className="h-64 bg-gray-200 rounded" />
+        </div>
+      </div>
+    );
+  }
+  if (err) return <div className="p-6 text-red-500">{err}</div>;
   if (!editor) return null;
 
   return (
     <div className="container max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-semibold mb-6">공지 수정</h1>
 
-      <form onSubmit={onSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input
-          className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-0"
+          className="w-full border rounded px-3 py-2"
           placeholder="제목"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
-          className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-0"
+          className="w-full border rounded px-3 py-2"
           placeholder="작성자"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -152,20 +176,24 @@ export default function NoticeUpdate() {
         <div className="flex gap-2">
           <button
             type="submit"
-            disabled={submitting}
-            className="px-4 py-2 rounded bg-black text-white disabled:opacity-50"
+            className="px-4 py-2 rounded bg-black text-white"
           >
-            저장
+            수정 저장
           </button>
-          <Link to={`/notices/${numId}`} className="px-4 py-2 rounded border">
+          <button
+            type="button"
+            onClick={() => nav(-1)}
+            className="px-4 py-2 rounded border"
+          >
             취소
-          </Link>
+          </button>
         </div>
       </form>
     </div>
   );
 }
 
+/* 공통 버튼/툴바 (Write와 동일) */
 function Btn({ on, active, disabled, label }) {
   return (
     <button
@@ -191,6 +219,7 @@ function Toolbar({ onPick }) {
     <div className="flex flex-wrap gap-2 p-2 border-b bg-gray-50">
       <HeadingBtn level={1} />
       <HeadingBtn level={2} />
+
       <Btn
         label="B"
         on={() => editor.chain().focus().toggleBold().run()}
@@ -242,12 +271,24 @@ function Toolbar({ onPick }) {
         on={() => editor.chain().focus().setTextAlign("right").run()}
         active={editor.isActive({ textAlign: "right" })}
       />
+
       <Btn
         label="</>"
         on={() => editor.chain().focus().toggleCodeBlock().run()}
         active={editor.isActive("codeBlock")}
         disabled={!editor.can().chain().focus().toggleCodeBlock().run()}
       />
+      <Btn
+        label="<"
+        on={() => editor.chain().focus().undo().run()}
+        disabled={!editor.can().chain().focus().undo().run()}
+      />
+      <Btn
+        label=">"
+        on={() => editor.chain().focus().redo().run()}
+        disabled={!editor.can().chain().focus().redo().run()}
+      />
+
       <label className="px-2 py-1 text-sm border rounded cursor-pointer">
         이미지
         <input

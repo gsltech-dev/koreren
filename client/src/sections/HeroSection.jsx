@@ -6,9 +6,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import useCarousel from "../hooks/useCarousel";
 
-import main1 from "../assets/images/main/bg_1.jpg";
-import main2 from "../assets/images/main/bg_2.jpg";
-import main3 from "../assets/images/main/bg_3.jpg";
+import main1 from "../assets/images/main/banner_01.webp";
+import main2 from "../assets/images/main/banner_02.webp";
+import main3 from "../assets/images/main/banner_03.webp";
 import main4 from "../assets/images/main/bg_4.jpg";
 
 import mainM1 from "../assets/images/main/main_m_1.jpg";
