@@ -1,16 +1,16 @@
 // src/components/ProductSection.jsx
 import usePairCarousel from "../hooks/usePairCarousel";
-import prd1 from "../assets/images/product/prod_1.jpg";
-import prd2 from "../assets/images/product/prod_2.png";
-import prd3 from "../assets/images/product/prod_3.png";
-import prd4 from "../assets/images/product/prod_4.png";
-import prd5 from "../assets/images/product/prod_5.png";
+import prd1 from "../assets/images/product/banner_portrait.webp";
+import prd2 from "../assets/images/product/banner_product1.webp";
+import prd3 from "../assets/images/product/banner_product2.webp";
+import prd4 from "../assets/images/product/banner_product1.webp";
+import prd5 from "../assets/images/product/banner_product3.webp";
 
 const items = [
-  { src: prd2, title: "마크스 핏 레드 쿠션" },
-  { src: prd3, title: "마크스 핏 AI 필터 쿠션" },
-  { src: prd4, title: "글라이드 앤 하이드 블러링 컨실러" },
-  { src: prd5, title: "마크스 핏 레드 파운데이션" },
+  { src: prd2, title: "핸드피스 v1" },
+  { src: prd3, title: "핸드피스 v1" },
+  { src: prd4, title: "핸드피스 v1" },
+  { src: prd5, title: "핸드피스 v1" },
 ];
 
 export default function ProductSection() {
@@ -79,7 +79,7 @@ export default function ProductSection() {
                 ].map((it, i) => (
                   <li key={i} className="w-1/2 shrink-0 px-2">
                     <div className="grid grid-cols-1 h-full">
-                      <div className="bg-gray-50 rounded">
+                      <div className="bg-red-500 rounded">
                         <img
                           src={it.src}
                           alt={`prd-m-${i}`}
