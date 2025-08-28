@@ -13,8 +13,6 @@ import Highlight from "@tiptap/extension-highlight";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import Image from "@tiptap/extension-image";
-import Dropcursor from "@tiptap/extension-dropcursor";
-import Gapcursor from "@tiptap/extension-gapcursor";
 import { getNotice, updateNotice } from "../../lib/api";
 
 export default function NoticeUpdate() {
@@ -38,8 +36,6 @@ export default function NoticeUpdate() {
       Placeholder.configure({ placeholder: "내용을 입력하세요..." }),
       Underline,
       TextAlign.configure({ types: ["heading", "paragraph", "image"] }),
-      Dropcursor,
-      Gapcursor,
       Image.configure({ inline: false, allowBase64: false }),
     ],
     content: "<p></p>",
@@ -162,7 +158,8 @@ export default function NoticeUpdate() {
           <div className="border rounded">
             <Toolbar onPick={onPick} />
             <div
-              className="p-3 h-[40vh] overflow-y-auto cursor-text"
+              className="p-3 h-[40vh] overflow-y-auto cursor-text allow-scroll"
+              data-lenis-prevent
               onClick={() => editor?.commands.focus()}
             >
               <EditorContent

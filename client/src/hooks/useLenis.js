@@ -29,6 +29,7 @@ export default function useLenis(options = {}) {
       touchMultiplier: 1.2,
       wheelMultiplier: 1.0,
       easing: (t) => 1 - Math.pow(1 - t, 3), // easeOutCubic
+      gestureTarget: document.querySelectorAll("body, .allow-scroll"),
       ...options,
     });
 
