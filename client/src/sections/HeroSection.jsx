@@ -94,12 +94,14 @@ export default function HeroSection() {
             key={i}
             onClick={() => goReal(i)}
             aria-label={`Go to slide ${i + 1}`}
-            className={`h-2.5 w-2.5 rounded-full transition
-              ${
-                i === dotIndex
-                  ? "bg-[#b3b3b3] shadow ring-1 ring-black/10 scale-110"
-                  : "bg-white/50 hover:bg-white/80"
-              }`}
+            className={`
+  h-1.5 rounded-full transition
+  ${
+    i === dotIndex
+      ? "w-6 bg-[#1b1b1b] shadow ring-1 ring-black/10"
+      : "w-1.5 bg-[#cecece] hover:bg-white/80"
+  }
+`}
           />
         ))}
       </div>

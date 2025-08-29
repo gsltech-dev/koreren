@@ -6,6 +6,7 @@ import logo from "../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import MobileMenu from "./MobileMenu";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,13 +113,18 @@ export default function Header() {
                   `}
                 >
                   <li>
-                    <a href="#" className="block py-5 hover:text-blue-400">
-                      BRAND STORY
-                    </a>
+                    <li>
+                      <Link
+                        to="/about"
+                        className="block py-5 hover:text-blue-400"
+                      >
+                        ABOUT
+                      </Link>
+                    </li>
                   </li>
                   <li>
                     <a href="#" className="block py-5 hover:text-blue-400">
-                      DEPERWAVE
+                      PARTNERS
                     </a>
                   </li>
                   <li>
@@ -136,7 +142,7 @@ export default function Header() {
                   href="#"
                   className="h-full flex items-center text-xl font-semibold hover:text-blue-500 transition-colors"
                 >
-                  SHOP
+                  PRODUCT
                 </a>
 
                 <ul
@@ -149,17 +155,7 @@ export default function Header() {
                 >
                   <li>
                     <a href="#" className="block py-5 hover:text-blue-400">
-                      ALL
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="block py-5 hover:text-blue-400">
-                      FACE
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="block py-5 hover:text-blue-400">
-                      SKINCARE
+                      DEEPERWAVE
                     </a>
                   </li>
                 </ul>
@@ -195,12 +191,7 @@ export default function Header() {
                   </li>
                   <li>
                     <a href="#" className="block py-5 hover:text-blue-400">
-                      MEMBERSHIP
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="block py-5 hover:text-blue-400">
-                      FAQ
+                      CONTACT US
                     </a>
                   </li>
                 </ul>

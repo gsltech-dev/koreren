@@ -1,16 +1,17 @@
 // src/components/ProductSection.jsx
+import { Link } from "react-router-dom";
 import usePairCarousel from "../hooks/usePairCarousel";
 import prd1 from "../assets/images/product/banner_portrait.webp";
-import prd2 from "../assets/images/product/banner_product1.webp";
-import prd3 from "../assets/images/product/banner_product2.webp";
-import prd4 from "../assets/images/product/banner_product1.webp";
-import prd5 from "../assets/images/product/banner_product3.webp";
+import prd2 from "../assets/images/product/banner_prd_1.webp";
+import prd3 from "../assets/images/product/banner_prd_2.webp";
+import prd4 from "../assets/images/product/banner_prd_3.webp";
+import prd5 from "../assets/images/product/banner_prd_4.webp";
 
 const items = [
-  { src: prd2, title: "핸드피스 v1" },
-  { src: prd3, title: "핸드피스 v1" },
-  { src: prd4, title: "핸드피스 v1" },
-  { src: prd5, title: "핸드피스 v1" },
+  { src: prd2, title: "핸드피스 올핏", link: "/products/allfit" },
+  { src: prd3, title: "핸드피스 헤드핏", link: "/products/headfit" },
+  { src: prd4, title: "핸드피스 집중핏", link: "/products/focusfit" },
+  { src: prd5, title: "DEEPERWAVE", link: "/products/deeperwave" },
 ];
 
 export default function ProductSection() {
@@ -32,41 +33,51 @@ export default function ProductSection() {
   );
 
   return (
-    <section className="pt-24">
-      <div className="w-full space-y-10 pb-24">
+    <section className="pt-[170px]">
+      <div className="w-full space-y-10">
         <div className="text-center">
-          <h3 className="text-4xl md:text-4xl lg:text-5xl font-semibold text-red-600 mb-4 pb-4 lg:pb-10">
-            BE YOU,
-            <br className="block md:hidden" /> BE CONFIDENT
+          <h3 className="text-4xl md:text-4xl lg:text-5xl font-semibold text-[#315fa7] mb-4 pb-4 lg:pb-10">
+            WELLNESS WITHOUT LIMITS,
+            <br /> WHEREVER YOU ARE
           </h3>
-          <h4 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-4 lg:pb-10">
-            나만의 색깔로 빛나는 일상을 만들어주는 메이크업 브랜드
+          <h4 className=" text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-4 lg:pb-10">
+            당신의 매일이 균형을 갖추도록
           </h4>
-          <p className="text-gray-800 max-w-2xl mx-auto leading-relaxed text-lg md:text-xl lg:text-2xl">
-            나만의 색깔을 찾고 자신만의 개성을 마음껏 표현할 수 있도록,
+          <p className="text-gray-800 leading-relaxed text-lg md:text-xl lg:text-2xl lg:pb-[170px]">
+            우리는 당신의 라이프스타일에 자연스럽게 스며들어
             <br className="hidden md:block" />
-            코어렌은 다양한 컬러 옵션을 통해
-            <br className="hidden md:block" />
-            당신의 일상이 더 빛나도록 만들어줍니다.
+            일상 속에서 균형과 회복을 선사하는 웰니스 경험을 만듭니다.
           </p>
+          <h3 className="text-4xl md:text-4xl lg:text-5xl font-semibold text-[#000000] mb-4 pb-4 lg:pb-10">
+            BEST & NEW
+          </h3>
         </div>
       </div>
 
       <div className="container max-w-full mx-auto">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 px-3 py-5">
-          <div className="col-span-1">
+          <div className="col-span-1 relative">
             <img
               src={prd1}
               alt="prd1"
               className="w-full h-full overflow-hidden"
             />
+            {/* 오버레이 텍스트 */}
+            <div className="absolute inset-0 py-30 px-20 space-y-2">
+              <h3 className="text-3xl md:text-3xl lg:text-5xl font-normal text-[#000000]">
+                내일과 다른 오늘을 위해
+              </h3>
+              <p className="text-3xl md:text-3xl lg:text-5xl text-gray-800 font-light">
+                디퍼웨이브 컨덕티브 젤
+              </p>
+            </div>
           </div>
 
           <div className="col-span-1">
             {/* 모바일 캐러셀: 모바일에서만 autoplay. 호버 시 일시정지 핸들러 포함 */}
             <div
               ref={wrapRef}
-              className="relative overflow-hidden select-none md:hidden touch-pan-y"
+              className="overflow-hidden select-none md:hidden touch-pan-y"
               {...autoplay.hoverHandlers}
             >
               <ul ref={trackRef} {...dragHandlers} className="flex touch-pan-y">
@@ -79,7 +90,7 @@ export default function ProductSection() {
                 ].map((it, i) => (
                   <li key={i} className="w-1/2 shrink-0 px-2">
                     <div className="grid grid-cols-1 h-full">
-                      <div className="bg-red-500 rounded">
+                      <div className="bg-gray-50 rounded ">
                         <img
                           src={it.src}
                           alt={`prd-m-${i}`}
@@ -88,8 +99,14 @@ export default function ProductSection() {
                           onDragStart={(e) => e.preventDefault()}
                         />
                       </div>
-                      <div className="bg-gray-50 flex justify-center items-center py-8 rounded">
+                      <div className="bg-gray-50 flex flex-col justify-center items-center py-8 rounded">
                         <h3 className="text-base font-bold">{it.title}</h3>
+                        <Link
+                          to={it.link}
+                          className="mt-2 text-sm font-medium text-blue-600 hover:underline"
+                        >
+                          VIEW MORE
+                        </Link>
                       </div>
                     </div>
                   </li>
@@ -98,7 +115,7 @@ export default function ProductSection() {
             </div>
 
             {/* md 이상: 2×2 그리드 */}
-            <ul className="hidden md:grid grid-cols-2 gap-4 h-full">
+            <ul className="hidden md:grid grid-cols-2 gap-5 h-full">
               {items.map((it, i) => (
                 <li key={i} className="bg-white">
                   <div className="grid grid-cols-1 h-full">
@@ -109,10 +126,16 @@ export default function ProductSection() {
                         className="w-full h-full overflow-hidden"
                       />
                     </div>
-                    <div className="bg-gray-50 flex justify-center items-center py-10">
+                    <div className="bg-gray-50 flex flex-col justify-center items-center py-10">
                       <h3 className="text-[15px] md:text-xl lg:text-2xl font-bold">
                         {it.title}
                       </h3>
+                      <Link
+                        to={it.link}
+                        className="mt-3 text-sm md:text-base font-medium text-[#707070] hover:text-gray-600"
+                      >
+                        VIEW MORE &gt;
+                      </Link>
                     </div>
                   </div>
                 </li>
