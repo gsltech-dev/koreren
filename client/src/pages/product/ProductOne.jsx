@@ -24,11 +24,11 @@ export default function ProductOne() {
     });
 
   return (
-    <main className="lg:p-[130px] overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 w-full">
+    <main className="container mx-auto max-w-[1920px] lg:py-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-y-20">
         {/* 이미지 캐러셀 */}
-        <div className="flex flex-col items-center overflow-hidden">
-          <div className="relative w-[680px] h-[755px] overflow-hidden bg-black select-none">
+        <div className="flex flex-col items-center">
+          <div className="relative w-full max-w-[720px] aspect-[720/755] overflow-hidden bg-black select-none">
             {/* 트랙 */}
             <div
               ref={trackRef}
@@ -87,7 +87,7 @@ export default function ProductOne() {
 
         {/* 제품 정보 */}
         <div>
-          <div className="w-full mx-auto max-w-[750px] px-20">
+          <div className="w-full mx-auto lg:w-[750px] px-20 overflow-hidden">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
               DEEPERWAVE
             </h2>
