@@ -10,7 +10,6 @@ import main1 from "../assets/images/main/banner_01.webp";
 import main2 from "../assets/images/main/banner_02.webp";
 import main3 from "../assets/images/main/banner_03.webp";
 import main4 from "../assets/images/main/bg_4.jpg";
-
 import mainM1 from "../assets/images/main/banner_m_01.webp";
 import mainM2 from "../assets/images/main/banner_m_02.webp";
 import mainM3 from "../assets/images/main/banner_m_03.webp";

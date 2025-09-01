@@ -13,6 +13,10 @@ import About from "./pages/About";
 import Detail from "./pages/Detail";
 // 필요한 페이지 추가 import...
 
+// // product
+import ProductOne from "./pages/product/ProductOne";
+
+//notice
 import NoticeList from "./pages/notice/NoticeList";
 import NoticeDetail from "./pages/notice/NoticeDetail";
 import NoticeWrite from "./pages/notice/NoticeWrite";
@@ -36,6 +40,8 @@ function App() {
             <Route path="/about" element={<About />} />
 
             <Route path="/detail" element={<Detail />} />
+
+            <Route path="/product/1" element={<ProductOne />} />
 
             <Route path="/notices" element={<NoticeList />} />
             <Route path="/notices/:id" element={<NoticeDetail />} />

@@ -106,29 +106,24 @@ export default function Header() {
                 {/* 위치/스타일 그대로, 표시만 isGnbOpen으로 제어 */}
                 <ul
                   className={`
-                    ${isGnbOpen ? "block" : "hidden"}
-                    absolute top-full left-1/2 -translate-x-1/2 w-max text-center
-                  text-gray-900 z-[60] text-xl
-                    px-6 md:px-10 py-4
-                  `}
+    ${isGnbOpen ? "block" : "hidden"}
+    absolute top-full left-1/2 -translate-x-1/2 w-max text-center
+    text-gray-900 z-[60] text-xl
+    px-6 md:px-10 py-4
+  `}
                 >
                   <li>
-                    <li>
-                      <Link
-                        to="/about"
-                        className="block py-5 hover:text-blue-400"
-                      >
-                        ABOUT
-                      </Link>
-                    </li>
+                    <Link
+                      to="/about"
+                      className="block py-5 hover:text-blue-400"
+                    >
+                      ABOUT
+                    </Link>
                   </li>
                   <li>
                     <a href="#" className="block py-5 hover:text-blue-400">
                       PARTNERS
                     </a>
-                  </li>
-                  <li>
-                    <a href="#" className="block py-5 hover:text-blue-400"></a>
                   </li>
                 </ul>
               </li>
@@ -154,9 +149,12 @@ export default function Header() {
                   `}
                 >
                   <li>
-                    <a href="#" className="block py-5 hover:text-blue-400">
+                    <Link
+                      to="/product/1"
+                      className="block py-5 hover:text-blue-400"
+                    >
                       DEEPERWAVE
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>

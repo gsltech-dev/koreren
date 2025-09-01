@@ -33,44 +33,37 @@ export default function ProductSection() {
   );
 
   return (
-    <section className="pt-[170px]">
-      <div className="w-full space-y-10">
-        <div className="text-center">
-          <h3 className="text-4xl md:text-4xl lg:text-5xl font-semibold text-[#315fa7] mb-4 pb-4 lg:pb-10">
+    <section className="">
+      <div className="w-full py-[100px] lg:py-[170px] lg:pl-[170px] space-y-10">
+        <div className="text-center lg:text-left">
+          <h3 className="text-2xl md:text-3xl lg:text-5xl font-semibold text-[#315fa7] mb-4 pb-4 lg:pb-[32px]">
             WELLNESS WITHOUT LIMITS,
             <br /> WHEREVER YOU ARE
           </h3>
-          <h4 className=" text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-4 lg:pb-10">
+          <h4 className=" text-2xl md:text-3xl lg:text-7xl font-bold mb-4 pb-4 lg:pb-[110px]">
             당신의 매일이 균형을 갖추도록
           </h4>
-          <p className="text-gray-800 leading-relaxed text-lg md:text-xl lg:text-2xl lg:pb-[170px]">
+          <p className="text-gray-800 leading-tight text-lg md:text-xl lg:text-5xl">
             우리는 당신의 라이프스타일에 자연스럽게 스며들어
-            <br className="hidden md:block" />
+            <br />
             일상 속에서 균형과 회복을 선사하는 웰니스 경험을 만듭니다.
           </p>
-          <h3 className="text-4xl md:text-4xl lg:text-5xl font-semibold text-[#000000] mb-4 pb-4 lg:pb-10">
-            BEST & NEW
-          </h3>
         </div>
       </div>
 
       <div className="container max-w-full mx-auto">
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 px-3 py-5">
+        <div className="text-center lg:text-left lg:px-[170px]">
+          <h3 className="text-4xl md:text-4xl lg:text-7xl font-semibold text-[#000000] mb-4 pb-4 lg:pb-[80px]">
+            BEST & NEW
+          </h3>
+        </div>
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 py-5">
           <div className="col-span-1 relative">
             <img
               src={prd1}
               alt="prd1"
               className="w-full h-full overflow-hidden"
             />
-            {/* 오버레이 텍스트 */}
-            <div className="absolute inset-0 py-30 px-20 space-y-2">
-              <h3 className="text-3xl md:text-3xl lg:text-5xl font-normal text-[#000000]">
-                내일과 다른 오늘을 위해
-              </h3>
-              <p className="text-3xl md:text-3xl lg:text-5xl text-gray-800 font-light">
-                디퍼웨이브 컨덕티브 젤
-              </p>
-            </div>
           </div>
 
           <div className="col-span-1">
@@ -103,7 +96,7 @@ export default function ProductSection() {
                         <h3 className="text-base font-bold">{it.title}</h3>
                         <Link
                           to={it.link}
-                          className="mt-2 text-sm font-medium text-blue-600 hover:underline"
+                          className="mt-2 text-sm font-medium text-[#707070] hover:text-gray-600"
                         >
                           VIEW MORE
                         </Link>
@@ -134,7 +127,7 @@ export default function ProductSection() {
                         to={it.link}
                         className="mt-3 text-sm md:text-base font-medium text-[#707070] hover:text-gray-600"
                       >
-                        VIEW MORE &gt;
+                        <span>VIEW MORE</span>
                       </Link>
                     </div>
                   </div>

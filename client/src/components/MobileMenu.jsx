@@ -41,41 +41,31 @@ function MobileMenu({ isOpen, onClose }) {
 
         <nav className="flex flex-col gap-8 px-6 pb-8">
           <a
+            href="/about"
+            className="text-gray-600 hover:text-blue-500 transition-colors"
+          >
+            ABOUT
+          </a>
+
+          <a
             href="#"
             className="text-gray-600 hover:text-blue-500 transition-colors"
           >
-            제품소개
+            PRODUCT
           </a>
           <a
             href="#"
             className="text-gray-600 hover:text-blue-500 transition-colors"
           >
-            전시 학회
+            NOTICE
           </a>
           <a
             href="#"
             className="text-gray-600 hover:text-blue-500 transition-colors"
           >
-            미디어
+            CONTACT US
           </a>
-          <a
-            href="#"
-            className="text-gray-600 hover:text-blue-500 transition-colors"
-          >
-            IR
-          </a>
-          <a
-            href="#"
-            className="text-gray-600 hover:text-blue-500 transition-colors"
-          >
-            회사소개
-          </a>
-          <a
-            href="#"
-            className="text-gray-600 hover:text-blue-500 transition-colors"
-          >
-            고객센터
-          </a>
+
           <div className="font-semibold text-sm">
             <a href="#" className="text-blue-500 transition-colors">
               KORERENMALL
