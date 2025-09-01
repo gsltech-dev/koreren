@@ -25,6 +25,7 @@ export default function ProductOne() {
 
   return (
     <main className="container mx-auto max-w-[1920px] lg:py-10">
+      {/* 메인 섹션 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-y-20">
         {/* 이미지 캐러셀 */}
         <div className="flex flex-col items-center">
@@ -55,14 +56,14 @@ export default function ProductOne() {
             <button
               onClick={prev}
               aria-label="Previous"
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-gray-700 hover:text-black"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20  text-[#b3b3b3]"
             >
               <FontAwesomeIcon icon={faChevronLeft} size="2x" />
             </button>
             <button
               onClick={next}
               aria-label="Next"
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-gray-700 hover:text-black"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20  text-[#b3b3b3]"
             >
               <FontAwesomeIcon icon={faChevronRight} size="2x" />
             </button>
@@ -147,6 +148,73 @@ export default function ProductOne() {
           </div>
         </div>
       </div>
+      {/* 메인 섹션 끝*/}
+
+      {/* 상세정보 섹션 */}
+      <div className="mt-20 w-full flex justify-center">
+        <div className="w-[1660px]">
+          {/* 제목 */}
+          <h3 className="text-2xl md:text-2xl text-center border-b-2 border-black pb-3">
+            상세정보
+          </h3>
+
+          {/* 상세정보 표 */}
+          <dl className="mt-1 text-base md:text-lg">
+            <div className="grid grid-cols-[140px_1fr] gap-x-6 py-4 border-b border-gray-300">
+              <dt className="text-gray-600 font-medium">포장단위</dt>
+              <dd>1세트 (본체 및 기본 구성품 포함)</dd>
+            </div>
+
+            <div className="grid grid-cols-[140px_1fr] gap-x-6 py-4 border-b border-gray-300">
+              <dt className="text-gray-600 font-medium">사용환경</dt>
+              <dd>실내용/권장 온도 0~40℃</dd>
+            </div>
+
+            <div className="grid grid-cols-[140px_1fr] gap-x-6 py-4 border-b border-gray-300">
+              <dt className="text-gray-600 font-medium">보관환경</dt>
+              <dd>직사광선을 피한 건조한 장소 / 권장 온도 -20~60℃</dd>
+            </div>
+
+            <div className="grid grid-cols-[140px_1fr] gap-x-6 py-4 border-b border-gray-300">
+              <dt className="text-gray-600 font-medium">보관방법</dt>
+              <dd>
+                사용 후 핸드피스와 전극패드를 청결히 관리하고, 핸드피스는 본체
+                거치대에 보관하십시오.
+              </dd>
+            </div>
+
+            <div className="grid grid-cols-[140px_1fr] gap-x-6 py-4 border-b border-gray-300">
+              <dt className="text-gray-600 font-medium">주의사항</dt>
+              <dd className="leading-relaxed">
+                <strong className="font-bold">
+                  본 제품은 의료기기가 아닌 웰니스 전자기기로 질병의 진단·치료
+                  목적으로 사용할 수 없습니다.
+                </strong>
+                <br />
+                사용 전 반드시 피부에 수분(물·수분크림·젤 등)을 도포하고, 사용
+                중 건조해지면 수분을 보충하십시오.
+                <br />
+                임신 중, 심장질환자, 체내 전자기기(심박기 등) 착용자는 사용하지
+                마십시오.
+                <br />
+                동일 부위에 장시간 사용을 피하고, 피부 이상 시 즉시 사용을
+                중단하십시오.
+                <br />
+                보다 자세한 내용은 사용설명서를 참고해 주십시오.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      {/*상세정보 섹션 끝 */}
+
+      {/* 상세페이지 영역 */}
+      <div className="mt-20 flex justify-center">
+        <div className="w-[1660px] h-[100vh] bg-gray-100 flex items-center justify-center">
+          <h2 className="text-5xl font-bold text-gray-500">상세페이지</h2>
+        </div>
+      </div>
+      {/* 상세페이지 영역 끝*/}
     </main>
   );
 }
