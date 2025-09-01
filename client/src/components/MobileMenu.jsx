@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -47,18 +48,20 @@ function MobileMenu({ isOpen, onClose }) {
             ABOUT
           </a>
 
-          <a
-            href="#"
+          <Link
+            to="/product/1"
+            onClick={onClose}
             className="text-gray-600 hover:text-blue-500 transition-colors"
           >
-            PRODUCT
-          </a>
-          <a
-            href="#"
+            DEEPERWAVE
+          </Link>
+          <Link
+            to="/notices"
+            onClick={onClose}
             className="text-gray-600 hover:text-blue-500 transition-colors"
           >
             NOTICE
-          </a>
+          </Link>
           <a
             href="#"
             className="text-gray-600 hover:text-blue-500 transition-colors"
