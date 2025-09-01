@@ -31,7 +31,7 @@ export default function About() {
       <section>
         <div>
           {/* 1300×770 비율 이미지 */}
-          <div className="w-full h-[50vh] lg:w-2/3 aspect-[16/9]">
+          <div className="w-full max-w-[1300px] aspect-[1300/770] mr-auto">
             <img
               src={about1}
               alt="about1"
@@ -46,7 +46,7 @@ export default function About() {
                 브랜드입니다.
               </h3>
 
-              <p className="mt-[35px] lg:mt-[70px] text-xl md:text-3xl lg:text-7xl font-[350] leading-tight">
+              <p className="mt-[35px] lg:mt-[70px] text-xl md:text-3xl lg:text-5xl font-[350] leading-tight">
                 오늘의 피로를 풀고, 더 나은 내일을 준비할 수 있도록
                 <br></br>코어렌은 일상 속 작은 회복을 함께합니다.
               </p>
@@ -59,7 +59,7 @@ export default function About() {
         {/* 브라우저 전체 기준으로 오른쪽 정렬 */}
         <div className="">
           {/* 1300×770 이미지 */}
-          <div className="w-full h-[50vh] lg:w-2/3 aspect-[16/9] ml-auto">
+          <div className="w-full max-w-[1300px] aspect-[1300/770] ml-auto">
             <img
               src={about2}
               alt="about2"
@@ -89,45 +89,47 @@ export default function About() {
           </div>
         </div>
       </section>
-      <section className="">
+      <section className="bg-gray-50 mb-[150px]">
         <div className="h-[80vh] lg:h-[60vh]">
           <div className="grid grid-cols-1 xl:grid-cols-2 h-full">
             <div className="col-span-1 flex items-center justify-center">
               <img
                 src={about_logo}
                 alt="about_logo"
-                className="w-[832px] h-[260px]"
+                className="w-full max-w-[832px] aspect-[832/260]"
               />
             </div>
             <div className="col-span-1 lg:px-40 py-5 h-full flex flex-col justify-center">
               <div className="mb-[50px]">
-                <h5 className="text-3xl text-[#70s7070]">BRAND LOGO DESIGN</h5>
+                <h5 className="text-center lg:text-left text-3xl lg:text-4xl text-[#707070]">
+                  BRAND LOGO DESIGN
+                </h5>
               </div>
-              <p className="lg:text-2xl mb-[20px]">
+              <p className="text-center lg:text-left text-[20px] lg:text-2xl mb-[20px]">
                 KOREREN의 로고는 Korea, Core, Renew 라는 이름처럼<br></br>
                 한국에서 시작된 브랜드가, 본질을 지키며, 일상의 회복과<br></br>
                 새로운 균형을 만들어간다는 의미를 담고 있습니다.
               </p>
 
-              <p className="lg:text-2xl mb-[90px]">
+              <p className="text-center lg:text-left text-[20px] lg:text-2xl mb-[90px]">
                 단단한 인상 속에서도 부드러운 흐름을 품은 로고는<br></br>
-                "진정한 아름다움의 회복"이라는 우리의 약속을 상징힙나디.
+                "진정한 아름다움의 회복"이라는 우리의 약속을 상징합니다.
               </p>
-              <div className="flex items-center mb-[25px]">
-                <div className="w-[51px] h-[51px] bg-[#1b1b1b] rounded-full mr-[15px]"></div>
+              <div className="flex items-center justify-center lg:justify-start mb-[25px]">
+                <div className="w-[40px] h-[40px] lg:w-[51px] lg:h-[51px] bg-[#1b1b1b] rounded-full mr-[15px]"></div>
                 <div>
-                  <p className="lg:text-xl">KORE BLACK</p>
-                  <span className="text-[18px] text-[#5c5c5c]">
-                    HEX #1B1B1B | RGB 27,27,27 | CMYK 0,0,0, 89
+                  <p className="text-[15px] lg:text-[20px]">KORE BLACK</p>
+                  <span className="text-[13px] lg:text-[18px] text-[#5c5c5c]">
+                    HEX #1B1B1B | RGB 27,27,27 | CMYK 0, 0, 0, 89
                   </span>
                 </div>
               </div>
-              <div className="flex items-center">
-                <div className="w-[51px] h-[51px] bg-[#315fa7] rounded-full mr-[15px]"></div>
+              <div className="flex items-center justify-center lg:justify-start ml-[20px] lg:ml-0">
+                <div className="w-[40px] h-[40px] lg:w-[51px] lg:h-[51px] bg-[#315fa7] rounded-full mr-[15px]"></div>
                 <div>
-                  <p className="lg:text-xl">KORE BLACK</p>
-                  <span className="text-[18px] text-[#5c5c5c]">
-                    HEX #2154C5 | RGB 27,27,197 | CMYK 88,70,0, 0
+                  <p className="text-[15px] lg:text-[20px]">KORE BLACK</p>
+                  <span className="text-[13px] lg:text-[18px] text-[#5c5c5c]">
+                    HEX #2154C5 | RGB 27,27,197 | CMYK 88, 70, 0, 0
                   </span>
                 </div>
               </div>
