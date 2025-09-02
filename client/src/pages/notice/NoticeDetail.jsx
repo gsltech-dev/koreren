@@ -68,11 +68,11 @@ export default function NoticeDetail() {
           </h1>
         </div>
 
-        <div className="py-8 border-b border-gray-200">
+        <div className="py-6 md:py-8 border-b border-gray-200">
           <h2 className="text-lg md:text-xl font-medium text-gray-900">
             {item.title}
           </h2>
-          <div className="mt-5 text-xs text-gray-500">{item.name}</div>
+          <div className="mt-2 md:mt-5 text-xs text-gray-500">{item.name}</div>
         </div>
 
         <article
@@ -86,30 +86,32 @@ export default function NoticeDetail() {
           dangerouslySetInnerHTML={{ __html: item.body || "" }}
         />
 
-        <div className="mt-10 flex justify-end">
-          <button
-            onClick={handleDelete}
-            disabled={deleting}
-            className="ml-2 inline-flex items-center justify-center border border-red-300 text-red-600 px-12 h-10 rounded text-sm hover:bg-red-50 disabled:opacity-50"
-          >
-            삭제
-          </button>
-          <Link
-            to={`/notices/${item.id}/update`}
-            className="inline-flex items-center justify-center border border-gray-300 px-12 h-10 rounded text-sm hover:bg-gray-50"
-          >
-            수정
-          </Link>
+        <div className="mt-10 grid grid-cols-1 gap-3 md:flex md:justify-end md:gap-2">
           <Link
             to="/notices"
-            className="inline-flex items-center justify-center border border-gray-300 px-12 h-10 rounded text-sm hover:bg-gray-50"
+            className="h-12 md:h-10 w-full md:w-auto rounded border border-gray-300 text-sm flex items-center justify-center px-3 md:px-12 hover:bg-gray-50"
           >
             목록
           </Link>
+
+          <Link
+            to={`/notices/${item.id}/update`}
+            className="h-12 md:h-10 w-full md:w-auto rounded border border-gray-300 text-sm flex items-center justify-center px-3 md:px-12 hover:bg-gray-50"
+          >
+            수정
+          </Link>
+
+          <button
+            onClick={handleDelete}
+            disabled={deleting}
+            className="h-12 md:h-10 w-full md:w-auto rounded border border-red-300 text-red-600 text-sm flex items-center justify-center px-3 md:px-12 hover:bg-red-50 disabled:opacity-50"
+          >
+            삭제
+          </button>
         </div>
       </div>
 
-      <div className="mt-12 text-sm">
+      <div className="mt-12 text-sm px-3">
         {item.prev && (
           <div
             className={`flex items-center justify-start py-3 ${
@@ -119,7 +121,7 @@ export default function NoticeDetail() {
             <span className="text-gray-500">이전</span>
             <Link
               to={`/notices/${item.prev.id}`}
-              className="ml-4 truncate text-gray-700 hover:underline"
+              className="ml-4 truncate text-gray-700 hover:underline flex-1"
             >
               {item.prev.title}
             </Link>
@@ -130,7 +132,7 @@ export default function NoticeDetail() {
             <span className="text-gray-500">다음</span>
             <Link
               to={`/notices/${item.next.id}`}
-              className="ml-4 truncate text-gray-700 hover:underline"
+              className="ml-4 truncate text-gray-700 hover:underline flex-1"
             >
               {item.next.title}
             </Link>
