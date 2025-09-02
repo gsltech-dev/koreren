@@ -104,25 +104,37 @@ export default function ProductOne() {
           {/* 스펙 표 */}
           <dl className="mt-1 text-[15px] md:text-lg">
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-x-6 py-4 border-b border-gray-400">
-              <dt className="text-black ml-3 md:ml-6">제품분류</dt>
-              <dd className="font-medium">웰니스 전자기기</dd>
+              <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
+                제품분류
+              </dt>
+              <dd className="font-medium text-[14px] md:text-[16px]">
+                웰니스 전자기기
+              </dd>
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-x-6 py-4 border-b border-gray-400">
-              <dt className="text-black ml-3 md:ml-6">제품형태</dt>
-              <dd className="font-medium">본체 + 핸드피스 + 전극패드</dd>
+              <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
+                제품형태
+              </dt>
+              <dd className="font-medium text-[14px]md:text-[16px]">
+                본체 + 핸드피스 + 전극패드
+              </dd>
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-x-6 py-4 border-b border-gray-400">
-              <dt className="text-black ml-3 md:ml-6">주요기능</dt>
-              <dd className="font-medium">
+              <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
+                주요기능
+              </dt>
+              <dd className="font-medium text-[14px] md:text-[16px]">
                 저주파 자극, 3가지 모드, 강도조절 50단계
               </dd>
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-x-6 py-4 border-b border-gray-400">
-              <dt className="text-black ml-3 md:ml-6">제품사양</dt>
-              <dd className="font-medium leading-relaxed">
+              <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
+                제품사양
+              </dt>
+              <dd className="font-medium leading-relaxed text-[14px] md:text-[16px]">
                 전원: 전용 어댑터 전원 공급 방식(충전식 아님)
                 <br />
                 크기/무게: 300×200×95mm / 1.7kg
@@ -134,8 +146,10 @@ export default function ProductOne() {
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-x-6 py-4 border-b border-gray-400">
-              <dt className="text-black ml-3 md:ml-6">구성품</dt>
-              <dd className="font-medium leading-relaxed">
+              <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
+                구성품
+              </dt>
+              <dd className="font-medium leading-relaxed text-[14px] md:text-[16px]">
                 본체, 어댑터, Y자형연결선, 핸드피스, 전극패드, 실리콘링
               </dd>
             </div>
@@ -144,7 +158,7 @@ export default function ProductOne() {
           {/* CTA */}
 
           <div className="flex justify-center">
-            <button className="mt-30 w-full md:w-[260px] h-14 md:h-16 rounded-md bg-[#2f63b8] text-white text-lg md:text-xl font-semibold hover:opacity-95">
+            <button className="mt-15 md:mt-30 w-full md:w-[260px] h-14 md:h-16 rounded-md bg-[#2f63b8] text-white text-lg md:text-xl font-semibold hover:opacity-95">
               제품 문의하기
             </button>
           </div>
@@ -153,7 +167,7 @@ export default function ProductOne() {
       {/* 메인 섹션 끝*/}
 
       {/* 상세정보 섹션 */}
-      <div className="mt-20 w-full flex justify-center px-3 lg:px-0">
+      <div className="mt-20 md:mt-30 w-full flex justify-center px-3 lg:px-0">
         <div className="w-[1660px]">
           {/* 제목 */}
           <h3 className="text-2xl md:text-2xl text-center border-b-2 border-black pb-3">
@@ -163,41 +177,47 @@ export default function ProductOne() {
           {/* 상세정보 표 */}
           <dl className="mt-1 text-[15px] md:text-lg">
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
                 포장단위
               </dt>
-              <dd>1세트 (본체 및 기본 구성품 포함)</dd>
+              <dd className="text-[14px] md:text-[16px]">
+                1세트 (본체 및 기본 구성품 포함)
+              </dd>
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
                 사용환경
               </dt>
-              <dd>실내용/권장 온도 0~40℃</dd>
+              <dd className="text-[14px] md:text-[16px]">
+                실내용/권장 온도 0~40℃
+              </dd>
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
                 보관환경
               </dt>
-              <dd>직사광선을 피한 건조한 장소 / 권장 온도 -20~60℃</dd>
+              <dd className="text-[14px] md:text-[16px]">
+                직사광선을 피한 건조한 장소 / 권장 온도 -20~60℃
+              </dd>
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
                 보관방법
               </dt>
-              <dd>
+              <dd className="text-[14px] md:text-[16px]">
                 사용 후 핸드피스와 전극패드를 청결히 관리하고, 핸드피스는 본체
                 거치대에 보관하십시오.
               </dd>
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
                 주의사항
               </dt>
-              <dd className="leading-relaxed">
+              <dd className="leading-relaxed text-[13px] md:text-[16px]">
                 <strong className="font-bold">
                   본 제품은 의료기기가 아닌 웰니스 전자기기로 질병의 진단·치료
                   목적으로 사용할 수 없습니다.

@@ -35,7 +35,7 @@ export default function ProductSection() {
   return (
     <section className="">
       <div className="w-full py-[100px] lg:py-[170px] lg:pl-[170px] space-y-10">
-        <div className="text-center lg:text-left">
+        <div className="text-center lg:text-left px-3 md:px-0">
           <h3 className="text-2xl md:text-3xl lg:text-5xl font-semibold text-[#315fa7] mb-4 pb-4 lg:pb-[32px]">
             WELLNESS WITHOUT LIMITS,
             <br /> WHEREVER YOU ARE
@@ -43,7 +43,7 @@ export default function ProductSection() {
           <h4 className=" text-2xl md:text-3xl lg:text-7xl font-bold mb-4 pb-4 lg:pb-[110px]">
             당신의 매일이 균형을 갖추도록
           </h4>
-          <p className="text-gray-800 leading-tight text-lg md:text-xl lg:text-5xl">
+          <p className="text-gray-800 leading-snug md:leading-tight text-[14px] md:text-2xl lg:text-5xl">
             우리는 당신의 라이프스타일에 자연스럽게 스며들어
             <br />
             일상 속에서 균형과 회복을 선사하는 웰니스 경험을 만듭니다.
@@ -53,7 +53,7 @@ export default function ProductSection() {
 
       <div className="container max-w-full mx-auto">
         <div className="text-center lg:text-left lg:px-[170px]">
-          <h3 className="text-4xl md:text-4xl lg:text-7xl font-semibold text-[#000000] mb-4 pb-4 lg:pb-[80px]">
+          <h3 className="text-3xl md:text-4xl lg:text-7xl font-semibold text-[#000000] pb-4 mb:pb-8 lg:pb-[80px]">
             BEST & NEW
           </h3>
         </div>

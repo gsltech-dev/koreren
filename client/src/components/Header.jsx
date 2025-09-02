@@ -84,9 +84,9 @@ export default function Header() {
       >
         <div className="flex h-full items-center justify-start">
           {/* 로고 */}
-          <a href="/" className="h-full inline-flex items-center">
+          <Link to="/" className="h-full inline-flex items-center">
             <img src={logo} alt="Logo" className="h-8 w-auto" />
-          </a>
+          </Link>
 
           {/* 메뉴 */}
           <div className="flex h-full items-center ml-auto gap-x-10">
@@ -96,12 +96,12 @@ export default function Header() {
                 className="group h-full relative"
                 onMouseEnter={() => setIsGnbOpen(true)}
               >
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="h-full flex items-center text-xl font-semibold hover:text-blue-500 transition-colors"
                 >
                   BRAND
-                </a>
+                </Link>
 
                 {/* 위치/스타일 그대로, 표시만 isGnbOpen으로 제어 */}
                 <ul
@@ -133,12 +133,12 @@ export default function Header() {
                 className="group h-full relative"
                 onMouseEnter={() => setIsGnbOpen(true)}
               >
-                <a
-                  href="#"
+                <Link
+                  to="/product/1"
                   className="h-full flex items-center text-xl font-semibold hover:text-blue-500 transition-colors"
                 >
                   PRODUCT
-                </a>
+                </Link>
 
                 <ul
                   className={`
@@ -164,12 +164,12 @@ export default function Header() {
                 className="group h-full relative"
                 onMouseEnter={() => setIsGnbOpen(true)}
               >
-                <a
-                  href="#"
+                <Link
+                  to="/notices"
                   className="h-full flex items-center text-xl font-semibold hover:text-blue-500 transition-colors"
                 >
                   COMMUNITY
-                </a>
+                </Link>
 
                 <ul
                   className={`
@@ -180,12 +180,12 @@ export default function Header() {
                   `}
                 >
                   <li>
-                    <a
-                      href="notices"
+                    <Link
+                      to="/notices"
                       className="block py-5 hover:text-blue-400"
                     >
                       NOTICE
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a href="#" className="block py-5 hover:text-blue-400">

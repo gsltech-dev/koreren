@@ -14,13 +14,13 @@ export default function About() {
             {/* 제목 */}
             <h1
               className="text-white font-extrabold tracking-[-0.03em] leading-tight
-                             text-4xl md:text-6xl lg:text-[62px]"
+                             text-2xl md:text-6xl lg:text-[62px]"
             >
               WELLNESS WITHOUT LIMITS,
             </h1>
             <p
               className="mt-2 text-white/95 font-bold tracking-[-0.03em] leading-tight
-                            text-3xl md:text-5xl lg:text-[62px]"
+                            text-2xl md:text-5xl lg:text-[62px]"
             >
               WHEREVER YOU ARE
             </p>
@@ -40,13 +40,13 @@ export default function About() {
           </div>
 
           <div className="my-[100px] lg:my-[200px] lg:ml-[200px]">
-            <div className="text-center lg:text-left">
-              <h3 className="text-2xl md:text-3xl lg:text-7xl font-semibold leading-tight">
+            <div className="text-center lg:text-left px-3 md:px-0">
+              <h3 className="text-[20px] md:text-3xl lg:text-7xl font-semibold leading-tight">
                 코어렌은 일상 속 균형과 회복을 지켜주는 <br></br>웰니스
                 브랜드입니다.
               </h3>
 
-              <p className="mt-[35px] lg:mt-[70px] text-xl md:text-3xl lg:text-5xl font-[350] leading-tight">
+              <p className="mt-[35px] lg:mt-[70px] text-[17px] md:text-3xl lg:text-5xl font-[350] leading-snug md:leading-tight">
                 오늘의 피로를 풀고, 더 나은 내일을 준비할 수 있도록
                 <br></br>코어렌은 일상 속 작은 회복을 함께합니다.
               </p>
@@ -68,20 +68,20 @@ export default function About() {
           </div>
 
           {/* 이미지와 200px 간격, 텍스트도 오른쪽 정렬 */}
-          <div className="my-[100px] lg:my-[200px] lg:mr-[200px] text-center lg:text-right lg:ml-auto">
+          <div className="my-[100px] lg:my-[200px] lg:mr-[200px] text-center lg:text-right lg:ml-auto px-3 md:px-0">
             <h3 className="text-2xl md:text-3xl lg:text-7xl leading-tight lg:leading-[95px] font-semibold tracking-[-0.03em] text-black">
               코어렌이 추구하는 웰니스의 본질은
               <br />
               "진정한 아름다움의 회복"에 있습니다.
             </h3>
 
-            <p className="mt-[35px] lg:mt-[70px] text-xl  md:text-2xl lg:text-5xl leading-tight lg:leading-[60px] font-normal tracking-[-0.03em] text-black">
+            <p className="mt-[35px] lg:mt-[70px] text-[15px]  md:text-2xl lg:text-5xl leading-snug md:leading-tight lg:leading-[60px] font-normal tracking-[-0.03em] text-black">
               진정한 아름다움의 회복은 단순한 외모가 아니라, 지친 몸과
               <br />
               마음을 돌보고 균형과 자신감을 되찾는 순간에서 시작됩니다.
             </p>
 
-            <p className="mt-[25px] lg:mt-[50px] text-xl md:text-2xl lg:text-5xl leading-tight lg:leading-[60px] font-normal tracking-[-0.03em] text-black">
+            <p className="mt-[25px] lg:mt-[50px] text-[15px] md:text-2xl lg:text-5xl leading-snug md:leading-tight lg:leading-[60px] font-normal tracking-[-0.03em] text-black">
               코어렌은 일상의 회복을 통해,
               <br />
               당신이 더 건강하고 빛나는 내일을 맞이하도록 함께합니다.
@@ -90,7 +90,7 @@ export default function About() {
         </div>
       </section>
       <section className="bg-gray-50 mb-[150px]">
-        <div className="h-[80vh] lg:h-[60vh]">
+        <div className="min-h-[80vh] lg:h-[60vh]">
           <div className="grid grid-cols-1 xl:grid-cols-2 h-full">
             <div className="col-span-1 flex items-center justify-center">
               <img
@@ -99,38 +99,41 @@ export default function About() {
                 className="w-full max-w-[832px] aspect-[832/260]"
               />
             </div>
-            <div className="col-span-1 lg:px-40 py-5 h-full flex flex-col justify-center">
-              <div className="mb-[50px]">
+            <div className="col-span-1 lg:px-40 py-5 h-full flex flex-col justify-center px-3 md:px-0">
+              <div className="mb-[40px] md:mb-[50px]">
                 <h5 className="text-center lg:text-left text-3xl lg:text-4xl text-[#707070]">
                   BRAND LOGO DESIGN
                 </h5>
               </div>
-              <p className="text-center lg:text-left text-[20px] lg:text-2xl mb-[20px]">
+              <p className="text-center lg:text-left text-[15px] lg:text-2xl mb-[20px]">
                 KOREREN의 로고는 Korea, Core, Renew 라는 이름처럼<br></br>
                 한국에서 시작된 브랜드가, 본질을 지키며, 일상의 회복과<br></br>
                 새로운 균형을 만들어간다는 의미를 담고 있습니다.
               </p>
 
-              <p className="text-center lg:text-left text-[20px] lg:text-2xl mb-[90px]">
+              <p className="text-center lg:text-left text-[15px] lg:text-2xl mb-[40px] md:mb-[90px]">
                 단단한 인상 속에서도 부드러운 흐름을 품은 로고는<br></br>
                 "진정한 아름다움의 회복"이라는 우리의 약속을 상징합니다.
               </p>
-              <div className="flex items-center justify-center lg:justify-start mb-[25px]">
-                <div className="w-[40px] h-[40px] lg:w-[51px] lg:h-[51px] bg-[#1b1b1b] rounded-full mr-[15px]"></div>
-                <div>
-                  <p className="text-[15px] lg:text-[20px]">KORE BLACK</p>
-                  <span className="text-[13px] lg:text-[18px] text-[#5c5c5c]">
-                    HEX #1B1B1B | RGB 27,27,27 | CMYK 0, 0, 0, 89
-                  </span>
+              <div className="space-y-6">
+                <div className="flex w-full items-center justify-start gap-4">
+                  <div className="size-10 lg:size-[51px] rounded-full bg-[#1b1b1b] shrink-0" />
+                  <div className="min-w-0">
+                    <p className="text-[14px] lg:text-[20px]">KORE BLACK</p>
+                    <span className="text-[12px] lg:text-[18px] text-[#5c5c5c]">
+                      HEX #1B1B1B | RGB 27,27,27 | CMYK 0, 0, 0, 89
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center justify-center lg:justify-start ml-[20px] lg:ml-0">
-                <div className="w-[40px] h-[40px] lg:w-[51px] lg:h-[51px] bg-[#315fa7] rounded-full mr-[15px]"></div>
-                <div>
-                  <p className="text-[15px] lg:text-[20px]">KORE BLACK</p>
-                  <span className="text-[13px] lg:text-[18px] text-[#5c5c5c]">
-                    HEX #2154C5 | RGB 27,27,197 | CMYK 88, 70, 0, 0
-                  </span>
+
+                <div className="flex w-full items-center justify-start gap-4">
+                  <div className="size-10 lg:size-[51px] rounded-full bg-[#315fa7] shrink-0" />
+                  <div className="min-w-0">
+                    <p className="text-[14px] lg:text-[20px]">KORE BLUE</p>
+                    <span className="text-[12px] lg:text-[18px] text-[#5c5c5c]">
+                      HEX #2154C5 | RGB 27,27,197 | CMYK 88, 70, 0, 0
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
