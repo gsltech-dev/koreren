@@ -1,7 +1,7 @@
 // src/components/ProductSection.jsx
 import { Link } from "react-router-dom";
 import usePairCarousel from "../hooks/usePairCarousel";
-import prd1 from "../assets/images/product/banner_portrait.webp";
+import prd1 from "../assets/images/product/banner_portrait(1000x1333).webp";
 import prd2 from "../assets/images/product/banner_prd_1.webp";
 import prd3 from "../assets/images/product/banner_prd_2.webp";
 import prd4 from "../assets/images/product/banner_prd_3.webp";

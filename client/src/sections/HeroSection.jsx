@@ -9,17 +9,15 @@ import useCarousel from "../hooks/useCarousel";
 import main1 from "../assets/images/main/banner_01.webp";
 import main2 from "../assets/images/main/banner_02.webp";
 import main3 from "../assets/images/main/banner_03.webp";
-import main4 from "../assets/images/main/banner_03.webp";
 
 import mainM1 from "../assets/images/main/banner_m_01.webp";
 import mainM2 from "../assets/images/main/banner_m_02.webp";
 import mainM3 from "../assets/images/main/banner_m_03.webp";
-import mainM4 from "../assets/images/main/banner_m_03.webp";
 
-// 기본은 모바일 이미지b
-const slides = [mainM1, mainM2, mainM3, mainM4];
+// 기본은 모바일 이미지
+const slides = [mainM1, mainM2, mainM3];
 // lg(1024px~)에서 쓸 데스크톱 이미지 (순서 1:1 매칭)
-const slidesLg = [main1, main2, main3, main4];
+const slidesLg = [main1, main2, main3];
 
 export default function HeroSection() {
   const { trackRef, extended, dotIndex, next, prev, goReal, isEager } =

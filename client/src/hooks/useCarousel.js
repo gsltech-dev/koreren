@@ -23,6 +23,8 @@ export default function useCarousel(
   {
     duration = 1.0,
     ease = "power2.out",
+    swipeThreshold = 28,
+    velocityBoost = 1.1,
     autoplay = {
       enabled: false,
       delay: 3500,

@@ -107,25 +107,21 @@ export default function ProductOne() {
               <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
                 제품분류
               </dt>
-              <dd className="font-medium text-[14px] md:text-[16px]">
-                웰니스 전자기기
-              </dd>
+              <dd className="font-medium">웰니스 전자기기</dd>
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-x-6 py-4 border-b border-gray-400">
               <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
                 제품형태
               </dt>
-              <dd className="font-medium text-[14px]md:text-[16px]">
-                본체 + 핸드피스 + 전극패드
-              </dd>
+              <dd className="font-medium">본체 + 핸드피스 + 전극패드</dd>
             </div>
 
             <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-x-6 py-4 border-b border-gray-400">
               <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
                 주요기능
               </dt>
-              <dd className="font-medium text-[14px] md:text-[16px]">
+              <dd className="font-medium">
                 저주파 자극, 3가지 모드, 강도조절 50단계
               </dd>
             </div>
@@ -134,7 +130,7 @@ export default function ProductOne() {
               <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
                 제품사양
               </dt>
-              <dd className="font-medium leading-relaxed text-[14px] md:text-[16px]">
+              <dd className="font-medium leading-relaxed">
                 전원: 전용 어댑터 전원 공급 방식(충전식 아님)
                 <br />
                 크기/무게: 300×200×95mm / 1.7kg
@@ -149,7 +145,7 @@ export default function ProductOne() {
               <dt className="text-black ml-3 md:ml-6 text-[14px] md:text-[17px]">
                 구성품
               </dt>
-              <dd className="font-medium leading-relaxed text-[14px] md:text-[16px]">
+              <dd className="font-medium leading-relaxed">
                 본체, 어댑터, Y자형연결선, 핸드피스, 전극패드, 실리콘링
               </dd>
             </div>
@@ -176,48 +172,42 @@ export default function ProductOne() {
 
           {/* 상세정보 표 */}
           <dl className="mt-1 text-[15px] md:text-lg">
-            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300 text-[14px] md:text-[17px]">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 ">
                 포장단위
               </dt>
-              <dd className="text-[14px] md:text-[16px]">
-                1세트 (본체 및 기본 구성품 포함)
-              </dd>
+              <dd>1세트 (본체 및 기본 구성품 포함)</dd>
             </div>
 
-            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300 text-[14px] md:text-[17px]">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 ">
                 사용환경
               </dt>
-              <dd className="text-[14px] md:text-[16px]">
-                실내용/권장 온도 0~40℃
-              </dd>
+              <dd>실내용/권장 온도 0~40℃</dd>
             </div>
 
-            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300 text-[14px] md:text-[17px]">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6">
                 보관환경
               </dt>
-              <dd className="text-[14px] md:text-[16px]">
-                직사광선을 피한 건조한 장소 / 권장 온도 -20~60℃
-              </dd>
+              <dd>직사광선을 피한 건조한 장소 / 권장 온도 -20~60℃</dd>
             </div>
 
-            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300  text-[14px] md:text-[17px]">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6">
                 보관방법
               </dt>
-              <dd className="text-[14px] md:text-[16px]">
+              <dd>
                 사용 후 핸드피스와 전극패드를 청결히 관리하고, 핸드피스는 본체
                 거치대에 보관하십시오.
               </dd>
             </div>
 
-            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300">
-              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 text-[14px] md:text-[17px]">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-x-2 lg:gap-6 py-4 border-b border-gray-300 text-[14px] md:text-[17px]">
+              <dt className="text-gray-600 font-medium ml-3 lg:ml-6 ">
                 주의사항
               </dt>
-              <dd className="leading-relaxed text-[13px] md:text-[16px]">
+              <dd className="leading-relaxed text-[13px] md:text-[17px]">
                 <strong className="font-bold">
                   본 제품은 의료기기가 아닌 웰니스 전자기기로 질병의 진단·치료
                   목적으로 사용할 수 없습니다.

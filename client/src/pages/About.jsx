@@ -13,16 +13,16 @@ export default function About() {
           <div className="text-center">
             {/* 제목 */}
             <h1
-              className="text-white font-extrabold tracking-[-0.03em] leading-tight
-                             text-2xl md:text-6xl lg:text-[62px]"
+              className="text-white tracking-[-0.03em] leading-tight
+                   text-2xl md:text-6xl lg:text-[62px] font-light"
             >
-              WELLNESS WITHOUT LIMITS,
+              <span className="font-extrabold">WELLNESS</span> WITHOUT LIMITS,
             </h1>
             <p
-              className="mt-2 text-white/95 font-bold tracking-[-0.03em] leading-tight
-                            text-2xl md:text-5xl lg:text-[62px]"
+              className="mt-2 text-white/95 tracking-[-0.03em] leading-tight
+                   text-2xl md:text-5xl lg:text-[62px] font-light"
             >
-              WHEREVER YOU ARE
+              <span className="font-bold">WHEREVER</span> YOU ARE
             </p>
           </div>
         </div>
@@ -129,9 +129,9 @@ export default function About() {
                 <div className="flex w-full items-center justify-start gap-4">
                   <div className="size-10 lg:size-[51px] rounded-full bg-[#315fa7] shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-[14px] lg:text-[20px]">KORE BLUE</p>
+                    <p className="text-[14px] lg:text-[20px]">REREN BLUE</p>
                     <span className="text-[12px] lg:text-[18px] text-[#5c5c5c]">
-                      HEX #2154C5 | RGB 27,27,197 | CMYK 88, 70, 0, 0
+                      HEX #315FA7 | RGB 27,27,197 | CMYK 71, 43, 0, 35
                     </span>
                   </div>
                 </div>
