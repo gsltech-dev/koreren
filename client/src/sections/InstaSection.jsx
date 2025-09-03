@@ -7,7 +7,7 @@ import img6 from "../assets/images/instagram/sideview.webp";
 
 export default function InstaSection() {
   return (
-    <section className="py-10 mb-[310px]">
+    <section className="py-10 mb-[100px]  md:mb-[150px] lg:mb-[310px]">
       <div className="container max-w-full mx-auto">
         <div className="flex items-end px-6 lg:px-[140px] pb-[40px] lg:pb-[80px]">
           <h3 className="text-3xl lg:text-7xl font-semibold">OUR STORY</h3>

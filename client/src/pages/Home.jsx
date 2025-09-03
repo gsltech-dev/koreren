@@ -1,9 +1,9 @@
 import HeroSection from "../sections/HeroSection";
 import ProductSection from "../sections/ProductSection";
-import BusinessSection from "../sections/BusinessSection";
+// import BusinessSection from "../sections/BusinessSection";
 import InstaSection from "../sections/InstaSection";
 import PartnersSection from "../sections/PartnersSection";
-import LinkSection from "../sections/LinkSection";
+// import LinkSection from "../sections/LinkSection";
 export default function Home() {
   return (
     <div>
@@ -11,8 +11,8 @@ export default function Home() {
       <ProductSection />
       <InstaSection />
       <PartnersSection />
-      <BusinessSection />
-      <LinkSection />
+      {/* <BusinessSection />
+      <LinkSection /> */}
       {/* 다른 섹션들 */}
     </div>
   );
