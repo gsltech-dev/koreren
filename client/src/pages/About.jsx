@@ -90,7 +90,7 @@ export default function About() {
         </div>
       </section>
       <section className="bg-gray-50 mb-[150px]">
-        <div className="min-h-[80vh] lg:h-[60vh]">
+        <div className="py-12 md:py-16 lg:py-20">
           <div className="grid grid-cols-1 xl:grid-cols-2 h-full">
             <div className="col-span-1 flex items-center justify-center">
               <img

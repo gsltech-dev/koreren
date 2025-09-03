@@ -33,7 +33,7 @@ export default function ProductSection() {
   );
 
   return (
-    <section className="">
+    <section className="mb-[240px]">
       <div className="w-full py-[100px] lg:py-[170px] lg:pl-[170px] space-y-10">
         <div className="text-center lg:text-left px-3 md:px-0">
           <h3 className="text-2xl md:text-3xl lg:text-5xl font-semibold text-[#315fa7] mb-4 pb-4 lg:pb-[32px]">
