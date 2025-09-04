@@ -1,7 +1,7 @@
 export const ENV = {
   NODE_ENV: process.env.NODE_ENV ?? "development",
   PORT: Number(process.env.PORT ?? 8080),
-  ALLOWED_ORIGIN: (process.env.ALLOWED_ORIGIN ?? "*")
+  CORS_ORIGINS: (process.env.CORS_ORIGINS ?? "")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean),
