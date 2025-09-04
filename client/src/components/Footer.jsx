@@ -14,21 +14,23 @@ export default function Footer() {
           {/* 좌측: 회사 정보 */}
           <div className="flex flex-col justify-center col-span-3">
             <div>
-              <div className="mb-3">
-                <img src={logo} alt="Logo" className="h-5 md:h-8 w-auto" />
+              <div className="mb-10 md:mb-3">
+                <img src={logo} alt="Logo" className="h-6 md:h-8 w-auto" />
               </div>
               <div className="mt-2 md:mt-4 space-y-3 text-sm md:text-base">
                 <ul>
                   <li className="flex items-center text-[15px] flex-wrap">
                     <p className="font-bold mr-[5px]">회사명:</p>
                     <p className="font-normal">(주)지에스엘텍</p>
-                    <p className="px-[10px]">&nbsp;|&nbsp;</p>
+                    <p className="px-[5px] md:px-[10px]">&nbsp;|&nbsp;</p>
                     <p className="font-bold mr-[5px]">대표자:</p>
                     <p className="font-normal">김유신</p>
-                    <p className="px-[10px]">&nbsp;|&nbsp;</p>
-                    <p className="font-bold mr-[5px]">사업자등록번호:</p>
-                    <p className="font-normal">213-87-03472</p>
-                    <p className="text-neutral-500">&nbsp;[사업자정보확인]</p>
+                    <p className="px-[10px] hidden md:block">&nbsp;|&nbsp;</p>
+                    <div className="w-full md:w-auto flex items-center">
+                      <p className="font-bold mr-[5px]">사업자등록번호:</p>
+                      <p className="font-normal">213-87-03472</p>
+                      <p className="text-neutral-500">&nbsp;[사업자정보확인]</p>
+                    </div>
                   </li>
 
                   <li className="flex items-center text-[15px] flex-wrap">
@@ -39,9 +41,15 @@ export default function Footer() {
                   <li className="flex items-center text-[15px] flex-wrap">
                     <p className="font-bold mr-[5px]">개인정보관리책임자:</p>
                     <p>김유신</p>
-                    <p className="px-[10px]">&nbsp;|&nbsp;</p>
-                    <p className="font-bold mr-[5px]">제휴문의</p>
-                    <p>gsltec7@gmail.com</p>
+
+                    {/* 구분선: 모바일에서 숨김 */}
+                    <p className="px-[10px] hidden md:block">&nbsp;|&nbsp;</p>
+
+                    {/* 제휴문의 블록: 모바일에서는 줄바꿈, md 이상에서는 옆에 */}
+                    <div className="w-full md:w-auto flex items-center">
+                      <p className="font-bold mr-[5px]">제휴문의:</p>
+                      <p>gsltec7@gmail.com</p>
+                    </div>
                   </li>
                 </ul>
                 <p className="mt-3 text-sm text-neutral-600">
@@ -57,15 +65,15 @@ export default function Footer() {
                   <a href="#" className="hover:underline">
                     회사소개
                   </a>
-                  <p className="px-[10px]">&nbsp;|&nbsp;</p>
+                  <p className="px-[5px] md:px-[10px]">&nbsp;|&nbsp;</p>
                   <a href="#" className="hover:underline">
                     개인정보 처리방침
                   </a>
-                  <p className="px-[10px]">&nbsp;|&nbsp;</p>
+                  <p className="px-[5px] md:px-[10px]">&nbsp;|&nbsp;</p>
                   <a href="#" className="hover:underline">
                     이용약관
                   </a>
-                  <p className="px-[10px]">&nbsp;|&nbsp;</p>
+                  <p className="px-[5px] md:px-[10px]">&nbsp;|&nbsp;</p>
                   <a href="#" className="hover:underline">
                     이용안내
                   </a>

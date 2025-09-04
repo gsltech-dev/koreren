@@ -2,8 +2,6 @@ import img1 from "../assets/images/instagram/sideview.webp";
 import img2 from "../assets/images/instagram/sideview.webp";
 import img3 from "../assets/images/instagram/sideview.webp";
 import img4 from "../assets/images/instagram/sideview.webp";
-import img5 from "../assets/images/instagram/sideview.webp";
-import img6 from "../assets/images/instagram/sideview.webp";
 
 export default function InstaSection() {
   return (
@@ -11,7 +9,7 @@ export default function InstaSection() {
       <div className="container max-w-full mx-auto">
         <div className="flex items-end px-6 lg:px-[140px] pb-[40px] lg:pb-[80px]">
           <h3 className="text-3xl lg:text-7xl font-semibold">OUR STORY</h3>
-          <span className="text-lg lg:text-3xl ml-3 lg:ml-5">
+          <span className="text-[10px] md:text-[30px] lg:text-3xl ml-3 lg:ml-5">
             @KOREREN_Instagram
           </span>
         </div>
