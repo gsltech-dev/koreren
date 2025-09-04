@@ -14,8 +14,11 @@ import About from "./pages/About";
 import Detail from "./pages/Detail";
 // 필요한 페이지 추가 import...
 
-// // product
+// product
 import ProductOne from "./pages/product/ProductOne";
+
+// contact us
+import ContactUs from "./pages/contact/ContactUs";
 
 //notice
 import NoticeList from "./pages/notice/NoticeList";
@@ -44,6 +47,8 @@ function App() {
             <Route path="/detail" element={<Detail />} />
 
             <Route path="/product/1" element={<ProductOne />} />
+
+            <Route path="/contact" element={<ContactUs />} />
 
             <Route path="/notices" element={<NoticeList />} />
             <Route path="/notices/:id" element={<NoticeDetail />} />
