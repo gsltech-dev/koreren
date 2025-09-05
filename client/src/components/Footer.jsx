@@ -63,9 +63,9 @@ export default function Footer() {
             <div className="pt-10">
               <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-neutral-700 text-[15px]">
                 <li className="flex font-normal">
-                  <a href="#" className="hover:underline">
+                  <Link to="/about" className="hover:underline">
                     회사소개
-                  </a>
+                  </Link>
                   <p className="px-[5px] md:px-[10px]">&nbsp;|&nbsp;</p>
                   <a href="#" className="hover:underline">
                     개인정보 처리방침
