@@ -1,4 +1,6 @@
 // src/pages/product/ProductOne.jsx
+import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -154,9 +156,12 @@ export default function ProductOne() {
           {/* CTA */}
 
           <div className="flex justify-center">
-            <button className="mt-15 md:mt-30 w-full md:w-[260px] h-14 md:h-16 rounded-md bg-[#2f63b8] text-white text-lg md:text-xl font-semibold hover:opacity-95">
+            <Link
+              to="/contact"
+              className="mt-15 md:mt-30 w-full md:w-[260px] h-14 md:h-16 rounded-md bg-[#2f63b8] text-white text-lg md:text-xl font-semibold flex items-center justify-center hover:opacity-95"
+            >
               제품 문의하기
-            </button>
+            </Link>
           </div>
         </div>
       </div>

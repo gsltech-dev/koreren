@@ -1,4 +1,5 @@
 // src/components/Footer.jsx
+import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import instagram from "../assets/images/footer/instagram_icon.svg";
 import naver from "../assets/images/footer/naver_icon.svg";
@@ -109,12 +110,12 @@ export default function Footer() {
                 </li>
               </ul>
               <div className="mt-4 mb-6">
-                <button
-                  type="button"
+                <Link
+                  to="/contact"
                   className="inline-flex items-center justify-center w-full h-10 border border-neutral-400 rounded-sm text-sm"
                 >
                   1:1 문의하기
-                </button>
+                </Link>
               </div>
             </div>
 

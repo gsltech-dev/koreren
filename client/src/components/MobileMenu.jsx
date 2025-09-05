@@ -62,12 +62,13 @@ function MobileMenu({ isOpen, onClose }) {
           >
             NOTICE
           </Link>
-          <a
-            href="#"
+          <Link
+            to="/contact"
+            onClick={onClose}
             className="text-gray-600 hover:text-blue-500 transition-colors"
           >
             CONTACT US
-          </a>
+          </Link>
 
           <div className="font-semibold text-sm">
             <a href="#" className="text-blue-500 transition-colors">
