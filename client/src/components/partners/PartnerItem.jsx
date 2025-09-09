@@ -16,7 +16,7 @@ export default function PartnerItem({
 }) {
   return (
     <div
-      className="py-4 px-1 md:px-4 cursor-pointer hover:bg-gray-50 transition"
+      className="py-4 cursor-pointer hover:bg-gray-50 transition"
       onClick={onToggle} // 박스 전체 클릭으로 토글
     >
       <div className="flex flex-row items-start md:items-center justify-between gap-3">
