@@ -56,12 +56,20 @@ function MobileMenu({ isOpen, onClose }) {
             DEEPERWAVE
           </Link>
           <Link
+            to="/partners"
+            onClick={onClose}
+            className="text-gray-600 hover:text-blue-500 transition-colors"
+          >
+            PARTNERS
+          </Link>
+          <Link
             to="/notices"
             onClick={onClose}
             className="text-gray-600 hover:text-blue-500 transition-colors"
           >
             NOTICE
           </Link>
+
           <Link
             to="/contact"
             onClick={onClose}

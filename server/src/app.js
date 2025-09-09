@@ -11,6 +11,15 @@ app.use(corsMiddleware);
 app.use(express.json());
 app.use(httpLogger);
 
+// 🔒 캐시 완전 비활성화
+app.set("etag", false);
+app.use((req, res, next) => {
+  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  next();
+});
+
 app.get("/healthz", (_req, res) => res.json({ ok: true }));
 app.get("/", (_req, res) => res.send("OK"));
 

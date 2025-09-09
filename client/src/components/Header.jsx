@@ -121,9 +121,12 @@ export default function Header() {
                     </Link>
                   </li>
                   <li>
-                    <a href="#" className="block py-5 hover:text-blue-400">
+                    <Link
+                      to="/partners"
+                      className="block py-5 hover:text-blue-400"
+                    >
                       PARTNERS
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>

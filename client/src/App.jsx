@@ -17,6 +17,10 @@ import Detail from "./pages/Detail";
 // product
 import ProductOne from "./pages/product/ProductOne";
 
+// partners
+import PartnersList from "./pages/partners/PartnersList";
+import PartnersCreate from "./pages/partners/PartnersCreate";
+
 // contact us
 import ContactUs from "./pages/contact/ContactUs";
 
@@ -47,6 +51,9 @@ function App() {
             <Route path="/detail" element={<Detail />} />
 
             <Route path="/product/1" element={<ProductOne />} />
+
+            <Route path="/partners" element={<PartnersList />} />
+            <Route path="/partners/create" element={<PartnersCreate />} />
 
             <Route path="/contact" element={<ContactUs />} />
 
