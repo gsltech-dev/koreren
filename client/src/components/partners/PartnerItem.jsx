@@ -9,6 +9,8 @@ export default function PartnerItem({
   open,
   onToggle,
   onDelete,
+  isAdmin = false,
+  loading = false,
   // 글자 크기/스타일 조절용 클래스 (원하면 페이지에서 덮어쓰기)
   nameClass = "text-base md:text-[20px]",
   tagClass = "text-[11px]",
@@ -49,24 +51,26 @@ export default function PartnerItem({
             </div>
           )}
           {/* 수정 버튼 */}
-          <div className="px-5 mt-2 flex gap-2">
-            <Link
-              to={`/partners/${item.id}/edit`}
-              onClick={(e) => e.stopPropagation()}
-              className="inline-block text-xs text-gray-600 hover:underline"
-            >
-              수정
-            </Link>
-            <button
-              className="inline-block text-xs text-red-600 hover:underline"
-              onClick={(e) => {
-                e.stopPropagation();
-                onDelete?.(item.id);
-              }}
-            >
-              삭제
-            </button>
-          </div>
+          {isAdmin && !loading && (
+            <div className="px-5 mt-2 flex gap-2">
+              <Link
+                to={`/partners/${item.id}/edit`}
+                onClick={(e) => e.stopPropagation()}
+                className="inline-block text-xs text-gray-600 hover:underline"
+              >
+                수정
+              </Link>
+              <button
+                className="inline-block text-xs text-red-600 hover:underline"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDelete?.(item.id);
+                }}
+              >
+                삭제
+              </button>
+            </div>
+          )}
         </div>
 
         {/* 아이콘 (보조 표시용) */}

@@ -10,4 +10,5 @@ export const corsMiddleware = cors({
     cb(new Error("CORS not allowed"));
   },
   credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
 });

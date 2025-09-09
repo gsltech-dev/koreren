@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import MobileMenu from "./MobileMenu";
 import { Link } from "react-router-dom";
+import useMe from "../hooks/useMe";
+import { logout } from "../lib/auth";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +19,17 @@ export default function Header() {
   const [solid, setSolid] = useState(false);
   const headerRef = useRef(null);
   const stRef = useRef(null); // ScrollTrigger 인스턴스 보관
+
+  const me = useMe(); // 로그인 정보 불러오기
+
+  async function handleLogout() {
+    try {
+      await logout();
+      window.location.reload(); // 새로고침으로 상태 초기화
+    } catch (e) {
+      alert(e.message || "로그아웃 실패");
+    }
+  }
 
   const handleToggleMenu = () => setIsMenuOpen((v) => !v);
   const handleCloseMenu = () => setIsMenuOpen(false);
@@ -211,6 +224,22 @@ export default function Header() {
             >
               KORERENMALL
             </a>
+          </div>
+          {/* 로그인 상태 */}
+          <div className="hidden lg:flex h-full items-center ml-10 gap-x-5">
+            {me?.isAdmin && (
+              <>
+                <span className="text-sm text-gray-600">
+                  {me.user?.email} 님
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="text-sm text-red-600 hover:underline"
+                >
+                  로그아웃
+                </button>
+              </>
+            )}
           </div>
 
           {/* 모바일 버튼 */}

@@ -1,7 +1,6 @@
-// client/src/lib/partners/api.js
 const API = import.meta.env.VITE_API_BASE || "http://localhost:8080";
 
-// list
+// 공개: 목록
 export async function listPartners(params = {}) {
   const qs = new URLSearchParams(params);
   const r = await fetch(`${API}/partners?${qs.toString()}`);
@@ -10,19 +9,7 @@ export async function listPartners(params = {}) {
   return j.data; // { rows, total, page, pageSize }
 }
 
-// create
-export async function createPartner(payload) {
-  const r = await fetch(`${API}/partners/create`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  const j = await r.json().catch(() => ({}));
-  if (!r.ok || !j.ok) throw new Error(j.error?.message || "등록 실패");
-  return j.data; // { id }
-}
-
-// detail
+// 공개: 상세
 export async function getPartner(id) {
   const r = await fetch(`${API}/partners/${id}`);
   const j = await r.json().catch(() => ({}));
@@ -30,22 +17,28 @@ export async function getPartner(id) {
   return j.data;
 }
 
-// update (PUT)
+// 보호: 생성
+export async function createPartner(payload) {
+  const { apiFetch } = await import("../http");
+  return apiFetch("/partners/create", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+}
+
+// 보호: 수정
 export async function updatePartner(id, payload) {
-  const r = await fetch(`${API}/partners/${id}`, {
+  const { apiFetch } = await import("../http");
+  return apiFetch(`/partners/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-  const j = await r.json().catch(() => ({}));
-  if (!r.ok || !j.ok) throw new Error(j?.error?.message || "수정 실패");
-  return j.data; // { id }
 }
 
-// delete
+// 보호: 삭제
 export async function deletePartner(id) {
-  const r = await fetch(`${API}/partners/${id}`, { method: "DELETE" });
-  const j = await r.json().catch(() => ({}));
-  if (!r.ok || !j.ok) throw new Error(j.error?.message || "삭제 실패");
-  return j.data; // { id }
+  const { apiFetch } = await import("../http");
+  return apiFetch(`/partners/${id}`, { method: "DELETE" });
 }

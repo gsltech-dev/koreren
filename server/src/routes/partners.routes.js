@@ -7,6 +7,7 @@ import {
   partnersUpdateController,
   partnersDeleteController,
 } from "../controllers/partners.controller.js";
+import { requireAuth, requireAdmin } from "../middlewares/auth.js";
 
 const r = Router();
 
@@ -17,12 +18,12 @@ r.get("/", partnersListController);
 r.get("/:id", partnersGetController);
 
 // create
-r.post("/create", partnersCreateController);
+r.post("/create", requireAuth, requireAdmin, partnersCreateController);
 
 // update (부분수정 허용 PUT)
-r.put("/:id", partnersUpdateController);
+r.put("/:id", requireAuth, requireAdmin, partnersUpdateController);
 
 // delete
-r.delete("/:id", partnersDeleteController);
+r.delete("/:id", requireAuth, requireAdmin, partnersDeleteController);
 
 export default r;

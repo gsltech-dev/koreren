@@ -9,4 +9,8 @@ export const ENV = {
   SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
   KAKAO_REST_KEY: process.env.KAKAO_REST_KEY,
   KAKAO_LOCAL_BASE: process.env.KAKAO_LOCAL_BASE,
+  ADMIN_EMAILS: (process.env.ADMIN_EMAIL || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean),
 };

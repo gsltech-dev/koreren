@@ -1,10 +1,11 @@
 import img1 from "../assets/images/partners/partners_main.webp";
+import { Link } from "react-router-dom";
 
 export default function PartnersSection() {
   return (
     <section className="section section_location relative w-full aspect-[1000/1080] lg:aspect-[1920/695] mb-[150px] md:mb-[200px] lg:mb-[300px] ">
-      <a
-        href="#"
+      <Link
+        to="/partners"
         className="block w-full h-full bg-cover bg-center relative"
         style={{ backgroundImage: `url(${img1})` }}
       >
@@ -37,7 +38,7 @@ export default function PartnersSection() {
             VIEW MORE
           </em>
         </div>
-      </a>
+      </Link>
     </section>
   );
 }

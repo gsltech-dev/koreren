@@ -61,7 +61,7 @@ export default function HeroSection() {
                   loading={isEager(i) ? "eager" : "lazy"}
                   decoding="async"
                   sizes="100vw"
-                  {...(isEager(i) ? { fetchpriority: "high" } : {})}
+                  {...(isEager(i) ? { fetchPriority: "high" } : {})}
                 />
               </picture>
             </div>

@@ -5,6 +5,7 @@ import { listPartners } from "../../lib/partners/api";
 import PartnerItem from "../../components/partners/PartnerItem";
 import { Link } from "react-router-dom";
 import { deletePartner } from "../../lib/partners";
+import useMe from "../../hooks/useMe";
 
 const PAGE_SIZE = 3;
 
@@ -26,6 +27,8 @@ export default function PartnersList() {
     () => Math.max(1, Math.ceil(total / PAGE_SIZE)),
     [total]
   );
+
+  const me = useMe();
 
   // 시/도 목록
   useEffect(() => {
@@ -173,6 +176,8 @@ export default function PartnersList() {
             open={expandedId === it.id}
             onToggle={() => setExpandedId(expandedId === it.id ? null : it.id)}
             onDelete={handleDelete}
+            isAdmin={me?.isAdmin}
+            loading={loading}
           />
         ))}
         {!rows.length && (
@@ -183,14 +188,16 @@ export default function PartnersList() {
       </div>
 
       {/* 파트너스 등록 버튼 */}
-      <div className="mt-6 flex justify-end">
-        <Link
-          to="/partners/create"
-          className="rounded px-3 py-2 border cursor-pointer"
-        >
-          파트너스 등록
-        </Link>
-      </div>
+      {me.isAdmin && (
+        <div className="mt-6 flex justify-end">
+          <Link
+            to="/partners/create"
+            className="rounded px-3 py-2 border cursor-pointer"
+          >
+            파트너스 등록
+          </Link>
+        </div>
+      )}
 
       {/* 페이지네이션 */}
       <nav className="mt-6 md:mt-8" aria-label="페이지네이션">

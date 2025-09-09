@@ -13,6 +13,8 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Detail from "./pages/Detail";
 // 필요한 페이지 추가 import...
+import RequireAdmin from "./routes/RequireAdmin";
+import Login from "./pages/auth/Login";
 
 // product
 import ProductOne from "./pages/product/ProductOne";
@@ -47,6 +49,8 @@ function App() {
         <main className="flex-1 overflow-x-hidden">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+
             <Route path="/about" element={<About />} />
 
             <Route path="/detail" element={<Detail />} />
@@ -54,8 +58,23 @@ function App() {
             <Route path="/product/1" element={<ProductOne />} />
 
             <Route path="/partners" element={<PartnersList />} />
-            <Route path="/partners/create" element={<PartnersCreate />} />
-            <Route path="/partners/:id/edit" element={<PartnersEdit />} />
+
+            <Route
+              path="/partners/create"
+              element={
+                <RequireAdmin>
+                  <PartnersCreate />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="/partners/:id/edit"
+              element={
+                <RequireAdmin>
+                  <PartnersEdit />
+                </RequireAdmin>
+              }
+            />
             <Route path="/contact" element={<ContactUs />} />
 
             <Route path="/notices" element={<NoticeList />} />
