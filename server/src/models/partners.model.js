@@ -41,4 +41,49 @@ async function partnersCreateModel(row) {
   return { id: data.id };
 }
 
-export { partnersListModel, partnersCreateModel };
+// detail
+async function partnersGetModel(id) {
+  const { data, error } = await sb
+    .from("partners")
+    .select(
+      "id,name,tag,si_do,gu_gun,address,detail_address,postal_code,phone,lat,lng,created_at,updated_at"
+    )
+    .eq("id", id)
+    .single();
+  if (error) throw error;
+  return data;
+}
+
+// update (부분수정)
+async function partnersUpdateModel(id, patch) {
+  const { data, error } = await sb
+    .from("partners")
+    .update(patch)
+    .eq("id", id)
+    .select("id")
+    .single();
+  if (error) throw error;
+  return { id: data.id };
+}
+
+// delete
+async function partnersDeleteModel(id) {
+  // 삭제된 행의 id를 반환하도록 select 사용
+  const { data, error } = await sb
+    .from("partners")
+    .delete()
+    .eq("id", id)
+    .select("id")
+    .single();
+
+  if (error) throw error;
+  return { id: data.id };
+}
+
+export {
+  partnersListModel,
+  partnersCreateModel,
+  partnersGetModel,
+  partnersUpdateModel,
+  partnersDeleteModel,
+};

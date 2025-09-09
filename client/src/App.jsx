@@ -20,6 +20,7 @@ import ProductOne from "./pages/product/ProductOne";
 // partners
 import PartnersList from "./pages/partners/PartnersList";
 import PartnersCreate from "./pages/partners/PartnersCreate";
+import PartnersEdit from "./pages/partners/PartnersEdit";
 
 // contact us
 import ContactUs from "./pages/contact/ContactUs";
@@ -54,7 +55,7 @@ function App() {
 
             <Route path="/partners" element={<PartnersList />} />
             <Route path="/partners/create" element={<PartnersCreate />} />
-
+            <Route path="/partners/:id/edit" element={<PartnersEdit />} />
             <Route path="/contact" element={<ContactUs />} />
 
             <Route path="/notices" element={<NoticeList />} />

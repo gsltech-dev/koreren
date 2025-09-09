@@ -53,4 +53,60 @@ function partnersListValidate(query = {}) {
   };
 }
 
-export { partnersCreateValidate, partnersListValidate };
+// update (부분수정 허용)
+function partnersUpdateValidate(payload = {}) {
+  if (!payload || typeof payload !== "object")
+    throw new Error("잘못된 요청입니다.");
+
+  const out = {};
+
+  const put = (key, val, max, required = false) => {
+    if (val == null) {
+      if (required) throw new Error(`${key}은(는) 필수입니다.`);
+      return;
+    }
+    const s = String(val).trim();
+    if (!s && required) throw new Error(`${key}은(는) 필수입니다.`);
+    if (max && s.length > max) throw new Error(`${key}이(가) 너무 깁니다.`);
+    out[key] = s || null;
+  };
+
+  // 부분 필드만 들어와도 OK
+  if ("name" in payload) put("name", payload.name, 200, true);
+  if ("tag" in payload) put("tag", payload.tag, 50, false);
+  if ("phone" in payload) {
+    const s = String(payload.phone).trim();
+    if (s && !/^\d{7,15}$/.test(s))
+      throw new Error("전화번호는 숫자만 7~15자리로 입력하세요.");
+    out.phone = s || null;
+  }
+  if ("postal_code" in payload) {
+    const s = String(payload.postal_code).trim();
+    if (s && !/^\d{3,10}$/.test(s))
+      throw new Error("우편번호 형식이 올바르지 않습니다.");
+    out.postal_code = s || null;
+  }
+  if ("address" in payload) put("address", payload.address, 500, true);
+  if ("detail_address" in payload)
+    put("detail_address", payload.detail_address, 500, false);
+
+  // si_do / gu_gun / lat / lng 은 서비스에서 지오코딩 결과로 설정
+  return out;
+}
+
+// delete
+function partnersDeleteValidate(params = {}) {
+  const raw = params.id ?? params.partner_id ?? params.partnerId;
+  const id = Number.parseInt(raw, 10);
+  if (!Number.isFinite(id) || id <= 0) {
+    throw new Error("유효한 id가 아닙니다.");
+  }
+  return { id };
+}
+
+export {
+  partnersCreateValidate,
+  partnersListValidate,
+  partnersUpdateValidate,
+  partnersDeleteValidate,
+};

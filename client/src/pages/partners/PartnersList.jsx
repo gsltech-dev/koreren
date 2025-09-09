@@ -3,6 +3,8 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { getRegions, toSidoQuery } from "../../lib/partners/regions";
 import { listPartners } from "../../lib/partners/api";
 import PartnerItem from "../../components/partners/PartnerItem";
+import { Link } from "react-router-dom";
+import { deletePartner } from "../../lib/partners";
 
 const PAGE_SIZE = 3;
 
@@ -60,6 +62,28 @@ export default function PartnersList() {
       }
     },
     [siDo, guGun, q]
+  );
+
+  const handleDelete = useCallback(
+    async (id) => {
+      if (!id) return;
+      if (!window.confirm("정말 삭제하시겠습니까?")) return;
+
+      try {
+        setLoading(true);
+        await deletePartner(id);
+
+        // 현재 페이지에서 마지막 1건을 지웠다면 이전 페이지로 이동
+        const isLastItemOnPage = rows.length === 1 && page > 1;
+        const nextPage = isLastItemOnPage ? page - 1 : page;
+        await search(nextPage);
+      } catch (e) {
+        alert(e.message || "삭제 실패");
+      } finally {
+        setLoading(false);
+      }
+    },
+    [rows.length, page, search]
   );
 
   useEffect(() => {
@@ -148,6 +172,7 @@ export default function PartnersList() {
             item={it}
             open={expandedId === it.id}
             onToggle={() => setExpandedId(expandedId === it.id ? null : it.id)}
+            onDelete={handleDelete}
           />
         ))}
         {!rows.length && (
@@ -155,6 +180,16 @@ export default function PartnersList() {
             결과가 없습니다.
           </div>
         )}
+      </div>
+
+      {/* 파트너스 등록 버튼 */}
+      <div className="mt-6 flex justify-end">
+        <Link
+          to="/partners/create"
+          className="rounded px-3 py-2 border cursor-pointer"
+        >
+          파트너스 등록
+        </Link>
       </div>
 
       {/* 페이지네이션 */}
