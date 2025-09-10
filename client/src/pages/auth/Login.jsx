@@ -15,7 +15,7 @@ export default function Login() {
     try {
       setLoading(true);
       await login(email, pw);
-      nav(state?.from || "/partners", { replace: true });
+      nav(state?.from || "/", { replace: true });
     } catch (e) {
       alert(e.message || "로그인 실패");
     } finally {
