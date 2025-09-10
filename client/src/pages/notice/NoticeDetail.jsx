@@ -97,7 +97,7 @@ export default function NoticeDetail() {
             목록
           </Link>
 
-          {me.isAdmin && (
+          {!me.loading && me.isAdmin && (
             <Link
               to={`/notices/${item.id}/update`}
               className="h-12 md:h-10 w-full md:w-auto rounded border border-gray-300 text-sm flex items-center justify-center px-3 md:px-12 hover:bg-gray-50"
@@ -106,7 +106,7 @@ export default function NoticeDetail() {
             </Link>
           )}
 
-          {me.isAdmin && (
+          {!me.loading && me.isAdmin && (
             <button
               onClick={handleDelete}
               disabled={deleting}

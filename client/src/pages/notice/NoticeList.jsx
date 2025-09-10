@@ -223,7 +223,7 @@ export default function NoticeList() {
           </button>
         </div>
 
-        {me.isAdmin && (
+        {!me.loading && me.isAdmin && (
           <Link
             to="/notices/write"
             className="h-9 md:h-10 inline-flex items-center justify-center rounded border px-3 md:px-4 text-xs md:text-sm"

@@ -188,7 +188,7 @@ export default function PartnersList() {
       </div>
 
       {/* 파트너스 등록 버튼 */}
-      {me.isAdmin && (
+      {!me.loading && me.isAdmin && (
         <div className="mt-6 flex justify-end">
           <Link
             to="/partners/create"
