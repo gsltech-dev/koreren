@@ -14,11 +14,11 @@ export default function PrivacyPolicy() {
         <p className="font-semibold mb-5">KOREREN 개인정보처리방침</p>
 
         <p className="mb-5">
-          주식회사 <strong>GSLTECH</strong>(이하 “회사”)는 개인정보 보호법 등
-          관련 법령을 준수하며, 이용자의 개인정보를 중요하게 생각합니다.
-          <br></br>회사는 브랜드 홈페이지(<strong>KOREREN</strong>)를 운영함에
-          있어 개인정보 처리방침을 통해, 수집되는 개인정보의 항목과 이용 목적,
-          보유 기간, 안전성 확보조치 등을 안내합니다.
+          주식회사 지에스엘텍(이하 “회사”)는 개인정보 보호법 등 관련 법령을
+          준수하며, 이용자의 개인정보를 중요하게 생각합니다.
+          <br></br>회사는 브랜드 홈페이지(KOREREN)를 운영함에 있어 개인정보
+          처리방침을 통해, 수집되는 개인정보의 항목과 이용 목적, 보유 기간,
+          안전성 확보조치 등을 안내합니다.
         </p>
 
         <p className="mb-5">
@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
 
         <p className="mb-5">
           (1) 회사는 이용자의 개인정보를 다음의 목적을 위해 처리 및 수집합니다.
-          <br />※ <strong>koreren.co.kr</strong>
+          <br />※ koreren.co.kr
         </p>
 
         <div className="overflow-x-auto text-left mb-5">
@@ -113,7 +113,7 @@ export default function PrivacyPolicy() {
 
         <p className="mb-5">
           (1) 회사 내부방침에 의한 정보 보유 사유
-          <br />※ <strong>koreren.co.kr</strong>
+          <br />※ koreren.co.kr
         </p>
 
         <div className="overflow-x-auto mb-5">
@@ -167,7 +167,10 @@ export default function PrivacyPolicy() {
                   본인확인에 관한 기록
                 </td>
                 <td className="border border-gray-300 p-3 align-top">6개월</td>
-                <td className="border border-gray-300 p-3 align-top">
+                <td
+                  className="border border-gray-300 p-3 align-top"
+                  rowSpan={5}
+                >
                   정보통신망 이용촉진 및 정보보호 등에 관한 법률
                 </td>
               </tr>
@@ -176,28 +179,24 @@ export default function PrivacyPolicy() {
                   계약 또는 청약철회 등에 관한 기록
                 </td>
                 <td className="border border-gray-300 p-3 align-top">5년</td>
-                <td className="border border-gray-300 p-3 align-top"></td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3 align-top">
                   대금결제 및 재화 등의 공급에 관한 기록
                 </td>
                 <td className="border border-gray-300 p-3 align-top">5년</td>
-                <td className="border border-gray-300 p-3 align-top"></td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3 align-top">
                   소비자의 불만 또는 분쟁처리에 관한 기록
                 </td>
                 <td className="border border-gray-300 p-3 align-top">3년</td>
-                <td className="border border-gray-300 p-3 align-top"></td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3 align-top">
                   표시 광고에 관한 기록
                 </td>
                 <td className="border border-gray-300 p-3 align-top">6개월</td>
-                <td className="border border-gray-300 p-3 align-top"></td>
               </tr>
             </tbody>
           </table>
@@ -374,16 +373,15 @@ export default function PrivacyPolicy() {
           10. 개인정보 처리방침의 변경에 관한 사항
         </h2>
         <p className="mb-5">
-          현 개인정보처리방침은 <strong>2025년 9월 10일</strong>부터 적용되며,
-          법령, 정책 또는 보안기술의 변경에 따라 내용의 추가, 삭제 및 수정이
-          있을 시에는 변경사항 시행일의 7일 전부터 홈페이지를 통해 고지할
-          것입니다.
+          현 개인정보처리방침은 2025년 9월 10일부터 적용되며, 법령, 정책 또는
+          보안기술의 변경에 따라 내용의 추가, 삭제 및 수정이 있을 시에는
+          변경사항 시행일의 7일 전부터 홈페이지를 통해 고지할 것입니다.
         </p>
         <p>
-          – 시행일자 : <strong>2025년 9월 10일</strong>
-          <br />– 공고일자 : <strong>2025년 9월 10일</strong>
+          – 시행일자 : 2025년 9월 10일
+          <br />– 공고일자 : 2025년 9월 10일
           <br />
-          개인정보처리방침 <strong>ver 1.0</strong>
+          개인정보처리방침 ver 1.0
         </p>
       </section>
     </div>

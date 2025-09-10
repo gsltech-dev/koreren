@@ -49,7 +49,7 @@ export default function Footer() {
                     {/* 제휴문의 블록: 모바일에서는 줄바꿈, md 이상에서는 옆에 */}
                     <div className="w-full md:w-auto flex items-center">
                       <p className="font-bold mr-[5px]">제휴문의:</p>
-                      <p>gsltec7@gmail.com</p>
+                      <p>jso@gsland.tech</p>
                     </div>
                   </li>
                 </ul>
