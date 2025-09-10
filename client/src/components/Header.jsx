@@ -216,15 +216,15 @@ export default function Header() {
             </ul>
           </div>
 
-          {/* 우측 링크 */}
-          <div className="hidden lg:flex h-full items-stretch ml-20">
+          {/* 코어렌 몰 생성 시 연결할 링크 */}
+          {/* <div className="hidden lg:flex h-full items-stretch ml-20">
             <a
               href="#"
               className="h-full inline-flex items-center hover:text-blue-500 transition-colors font-semibold text-xl"
             >
               KORERENMALL
             </a>
-          </div>
+          </div> */}
           {/* 로그인 상태 */}
           <div className="hidden lg:flex h-full items-center ml-10 gap-x-5">
             {me?.isAdmin && (

@@ -78,11 +78,12 @@ function MobileMenu({ isOpen, onClose }) {
             CONTACT US
           </Link>
 
-          <div className="font-semibold text-sm">
+          {/* 추후 쇼핑몰 연결 링크 */}
+          {/* <div className="font-semibold text-sm">
             <a href="#" className="text-blue-500 transition-colors">
               KORERENMALL
             </a>
-          </div>
+          </div> */}
         </nav>
       </aside>
     </>

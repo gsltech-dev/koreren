@@ -84,18 +84,18 @@ export default function Footer() {
             <div>
               <ul>
                 <li className="flex items-center">
-                  <p className="font-semibold text-[15px] xl:text-[20px] mr-[10px] xl:mr-[24px]">
+                  <p className="font-bold text-[15px] xl:text-[20px] mr-[10px] xl:mr-[15px]">
                     고객센터
                   </p>
-                  <p className="font-bold text-[15px] xl:text-[20px]">
+                  <p className="font-semibold text-[15px] xl:text-[20px]">
                     02-515-2026
                   </p>
                 </li>
                 <li className="flex items-center">
-                  <p className="font-semibold text-[15px] xl:text-[20px] mr-[10px] xl:mr-[24px]">
+                  <p className="font-bold text-[15px] xl:text-[20px] mr-[10px] xl:mr-[15px]">
                     운영시간
                   </p>
-                  <p className="font-bold text-[15px] xl:text-[20px]">
+                  <p className="font-semibold text-[15px] xl:text-[20px]">
                     평일 10:00 ~ 17:00
                   </p>
                 </li>
