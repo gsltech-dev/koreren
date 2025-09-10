@@ -13,7 +13,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Detail from "./pages/Detail";
 // 필요한 페이지 추가 import...
-import RequireAdmin from "./routes/RequireAdmin";
+import RequireAdmin from "./routes/RequireAdmin"; //Login 했을 때만 URL 접근 가능(라우트 보호 용도)
 import Login from "./pages/auth/Login";
 
 // product
@@ -79,8 +79,22 @@ function App() {
 
             <Route path="/notices" element={<NoticeList />} />
             <Route path="/notices/:id" element={<NoticeDetail />} />
-            <Route path="/notices/write" element={<NoticeWrite />} />
-            <Route path="/notices/:id/update" element={<NoticeUpdate />} />
+            <Route
+              path="/notices/write"
+              element={
+                <RequireAdmin>
+                  <NoticeWrite />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="/notices/:id/update"
+              element={
+                <RequireAdmin>
+                  <NoticeUpdate />
+                </RequireAdmin>
+              }
+            />
           </Routes>
         </main>
         <Footer />

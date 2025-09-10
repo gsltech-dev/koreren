@@ -2,8 +2,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getNotice, deleteNoticeViaServer } from "../../lib/api";
+import useMe from "../../hooks/useMe";
 
 export default function NoticeDetail() {
+  const me = useMe();
+
   const { id } = useParams();
   const numId = Number.parseInt(id, 10);
   const navigate = useNavigate();
@@ -94,20 +97,24 @@ export default function NoticeDetail() {
             목록
           </Link>
 
-          <Link
-            to={`/notices/${item.id}/update`}
-            className="h-12 md:h-10 w-full md:w-auto rounded border border-gray-300 text-sm flex items-center justify-center px-3 md:px-12 hover:bg-gray-50"
-          >
-            수정
-          </Link>
+          {me.isAdmin && (
+            <Link
+              to={`/notices/${item.id}/update`}
+              className="h-12 md:h-10 w-full md:w-auto rounded border border-gray-300 text-sm flex items-center justify-center px-3 md:px-12 hover:bg-gray-50"
+            >
+              수정
+            </Link>
+          )}
 
-          <button
-            onClick={handleDelete}
-            disabled={deleting}
-            className="h-12 md:h-10 w-full md:w-auto rounded border border-red-300 text-red-600 text-sm flex items-center justify-center px-3 md:px-12 hover:bg-red-50 disabled:opacity-50"
-          >
-            삭제
-          </button>
+          {me.isAdmin && (
+            <button
+              onClick={handleDelete}
+              disabled={deleting}
+              className="h-12 md:h-10 w-full md:w-auto rounded border border-red-300 text-red-600 text-sm flex items-center justify-center px-3 md:px-12 hover:bg-red-50 disabled:opacity-50"
+            >
+              삭제
+            </button>
+          )}
         </div>
       </div>
 

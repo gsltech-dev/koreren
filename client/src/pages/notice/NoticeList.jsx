@@ -2,11 +2,14 @@
 import { useEffect, useState } from "react";
 import { getNotices } from "../../lib/api";
 import { Link, useSearchParams } from "react-router-dom";
+import useMe from "../../hooks/useMe";
 import SelectBasic from "../../components/SelectBasic";
 
 const PAGE_SIZE = 15;
 
 export default function NoticeList() {
+  const me = useMe();
+
   const [rows, setRows] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -220,12 +223,14 @@ export default function NoticeList() {
           </button>
         </div>
 
-        <a
-          href="/notices/write"
-          className="h-9 md:h-10 inline-flex items-center justify-center rounded border px-3 md:px-4 text-xs md:text-sm"
-        >
-          글작성
-        </a>
+        {me.isAdmin && (
+          <Link
+            to="/notices/write"
+            className="h-9 md:h-10 inline-flex items-center justify-center rounded border px-3 md:px-4 text-xs md:text-sm"
+          >
+            글작성
+          </Link>
+        )}
       </form>
 
       {/* 페이지네이션 */}
