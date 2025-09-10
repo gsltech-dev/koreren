@@ -67,13 +67,9 @@ export default function Footer() {
                     회사소개
                   </Link>
                   <p className="px-[5px] md:px-[10px]">&nbsp;|&nbsp;</p>
-                  <a href="#" className="hover:underline">
+                  <Link to="/privacy" className="hover:underline">
                     개인정보 처리방침
-                  </a>
-                  <p className="px-[5px] md:px-[10px]">&nbsp;|&nbsp;</p>
-                  <a href="#" className="hover:underline">
-                    이용약관
-                  </a>
+                  </Link>
                   <p className="px-[5px] md:px-[10px]">&nbsp;|&nbsp;</p>
                   <a href="#" className="hover:underline">
                     이용안내

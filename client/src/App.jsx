@@ -12,6 +12,8 @@ import ScrollToTop from "./components/ScrollToTop"; //Link 이동 시 스크롤 
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Detail from "./pages/Detail";
+import PrivacyPolicy from "./components/PrivacyPolicy"; //개인정보 처리 방침
+
 // 필요한 페이지 추가 import...
 import RequireAdmin from "./routes/RequireAdmin"; //Login 했을 때만 URL 접근 가능(라우트 보호 용도)
 import Login from "./pages/auth/Login";
@@ -50,6 +52,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
 
             <Route path="/about" element={<About />} />
 

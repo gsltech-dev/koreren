@@ -235,7 +235,7 @@ export default function ContactUs() {
                       성명, 연락처, 내용
                     </td>
                     <td className="py-2 text-[10px] md:text-sm">
-                      등록일로부터 3년 보관 후 지체없이 파기
+                      등록일로부터 1년 보관 후 지체없이 파기
                     </td>
                   </tr>
                 </tbody>
