@@ -283,11 +283,11 @@ export default function PrivacyPolicy() {
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">연락처</td>
-                <td className="border border-gray-300 p-3">[작성중]</td>
+                <td className="border border-gray-300 p-3">02-545-2026</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">이메일</td>
-                <td className="border border-gray-300 p-3">[작성중]</td>
+                <td className="border border-gray-300 p-3">gslt@gsland.tech</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">1:1 문의 담당자</td>
@@ -295,7 +295,7 @@ export default function PrivacyPolicy() {
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">연락처</td>
-                <td className="border border-gray-300 p-3">[작성중]</td>
+                <td className="border border-gray-300 p-3">010-2610-2029</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">이메일</td>

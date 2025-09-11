@@ -8,6 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import prdFront from "../../assets/images/product/prd1/frontview.webp";
 import prdSide from "../../assets/images/product/prd1/sideview.webp";
+import detailImg from "../../assets/images/product/prd1/product-detail.jpeg";
+import exchangeImg from "../../assets/images/product/prd1/exchange-return.jpeg";
 
 import useCarousel from "../../hooks/useCarousel";
 
@@ -236,12 +238,34 @@ export default function ProductOne() {
       {/*상세정보 섹션 끝 */}
 
       {/* 상세페이지 영역 */}
-      <div className="mt-20 flex justify-center px-3">
-        <div className="w-[1660px] h-[100vh] bg-gray-100 flex items-center justify-center">
-          <h2 className="text-5xl font-bold text-gray-500">상세페이지</h2>
+      <section className="mt-20 flex justify-center px-3">
+        <div className="w-[1660px]">
+          {/* 1. Product Detail */}
+          <figure className="mb-10">
+            <img
+              src={detailImg}
+              alt="Product detail image"
+              loading="lazy"
+              className="w-full h-auto"
+            />
+            <figcaption className="sr-only">Product Detail Image</figcaption>
+          </figure>
+
+          {/* 2. Exchange & Return Policy */}
+          <figure>
+            <img
+              src={exchangeImg}
+              alt="Exchange and return policy image"
+              loading="lazy"
+              className="w-full h-auto"
+            />
+            <figcaption className="sr-only">
+              Exchange & Return Policy
+            </figcaption>
+          </figure>
         </div>
-      </div>
-      {/* 상세페이지 영역 끝*/}
+      </section>
+      {/* 상세페이지 영역 끝 */}
     </main>
   );
 }

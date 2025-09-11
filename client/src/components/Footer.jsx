@@ -88,7 +88,7 @@ export default function Footer() {
                     고객센터
                   </p>
                   <p className="font-semibold text-[15px] xl:text-[20px]">
-                    02-515-2026
+                    02-545-2026
                   </p>
                 </li>
                 <li className="flex items-center">
