@@ -239,7 +239,7 @@ export default function ProductOne() {
 
       {/* 상세페이지 영역 */}
       <section className="mt-20 flex justify-center px-3">
-        <div className="w-[1660px]">
+        <div className="w-full max-w-[900px]">
           {/* 1. Product Detail */}
           <figure className="mb-10">
             <img
