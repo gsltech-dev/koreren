@@ -6,6 +6,7 @@ import PartnerItem from "../../components/partners/PartnerItem";
 import { Link } from "react-router-dom";
 import { deletePartner } from "../../lib/partners";
 import useMe from "../../hooks/useMe";
+import SelectBasic from "../../components/SelectBasic";
 
 const PAGE_SIZE = 3;
 
@@ -123,32 +124,31 @@ export default function PartnersList() {
 
       {/* 필터 */}
       <div className="md:pl-50 mt-6 grid grid-cols-1 md:grid-cols-[1fr_1fr_2fr_auto] gap-3 text-gray-500">
-        <select
-          className="border border-gray-300 rounded px-3 py-2"
+        {/* 시/도 */}
+        <SelectBasic
           value={siDo}
-          onChange={(e) => setSiDo(e.target.value)}
-        >
-          <option value="">시/도 선택</option>
-          {siDoList.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
+          onChange={setSiDo}
+          options={[
+            { value: "", label: "시/도 선택" },
+            ...siDoList.map((s) => ({ value: s, label: s })),
+          ]}
+          className="min-w-[140px]"
+        />
 
-        <select
-          className="border border-gray-300 rounded px-3 py-2"
+        {/* 구/군 */}
+        <SelectBasic
           value={guGun}
-          onChange={(e) => setGuGun(e.target.value)}
-          disabled={!siDo || !guGunList.length}
-        >
-          <option value="">{siDo ? "구/군" : "구/군"}</option>
-          {guGunList.map((g) => (
-            <option key={g} value={g}>
-              {g}
-            </option>
-          ))}
-        </select>
+          onChange={setGuGun}
+          options={
+            siDo
+              ? [
+                  { value: "", label: "구/군 선택" },
+                  ...guGunList.map((g) => ({ value: g, label: g })),
+                ]
+              : [{ value: "", label: "구/군 선택" }]
+          }
+          className="min-w-[140px]"
+        />
 
         <input
           className="border border-gray-300 rounded px-3 py-2"

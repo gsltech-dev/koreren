@@ -54,7 +54,15 @@ export default function SelectBasic({
         <ul
           ref={listRef}
           role="listbox"
-          className="absolute left-0 right-0 mt-1 z-50 max-h-60 overflow-auto rounded border bg-white shadow-lg"
+          data-lenis-prevent // ← Lenis 개입 차단
+          className="
+      allow-scroll            /* Lenis gestureTarget 허용 대상 */
+      absolute left-0 right-0 mt-1 z-50
+      max-h-64 md:max-h-80    /* 높이 제한 */
+      overflow-y-auto         /* 세로 스크롤 */
+      overscroll-contain      /* iOS 스크롤 체인 방지 */
+      rounded border bg-white shadow-lg
+    "
         >
           {options.map((o) => (
             <li
