@@ -30,7 +30,6 @@ export default function Footer() {
                     <div className="w-full md:w-auto flex items-center">
                       <p className="font-bold mr-[5px]">사업자등록번호:</p>
                       <p className="font-normal">213-87-03472</p>
-                      <p className="text-neutral-500">&nbsp;[사업자정보확인]</p>
                     </div>
                   </li>
 
@@ -70,10 +69,6 @@ export default function Footer() {
                   <Link to="/privacy" className="hover:underline">
                     개인정보 처리방침
                   </Link>
-                  <p className="px-[5px] md:px-[10px]">&nbsp;|&nbsp;</p>
-                  <a href="#" className="hover:underline">
-                    이용안내
-                  </a>
                 </li>
               </ul>
             </div>
