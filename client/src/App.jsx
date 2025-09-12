@@ -2,6 +2,8 @@ import useLenis from "./hooks/useLenis";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import { useEffect } from "react";
+import { warmup } from "./lib/warmupApi"; // 미리 서버 불러오기 웜업
 
 // 공통 컴포넌트
 import Header from "./components/Header";
@@ -42,6 +44,9 @@ function App() {
     touchMultiplier: 1.2, // 터치 민감도
     // easing: (t) => 1 - Math.pow(1 - t, 3),
   });
+  useEffect(() => {
+    warmup();
+  }, []);
 
   return (
     <BrowserRouter>

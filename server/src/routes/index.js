@@ -1,4 +1,5 @@
 import { Router } from "express";
+import warmup from "./warmup.routes.js";
 import notices from "./notices.routes.js";
 import contact from "./contact.routes.js";
 import partners from "./partners.routes.js";
@@ -7,6 +8,7 @@ import auth from "./auth.routes.js";
 import testController from "../controllers/test.controller.js";
 
 const r = Router();
+r.use("/warmup", warmup);
 r.use("/notices", notices);
 r.use("/contact", contact);
 r.use("/partners", partners);

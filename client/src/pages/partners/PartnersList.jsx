@@ -169,18 +169,28 @@ export default function PartnersList() {
 
       {/* 리스트 + 인라인 지도 */}
       <div className="mt-6 border-y border-gray-300 divide-y divide-gray-300">
-        {rows.map((it) => (
-          <PartnerItem
-            key={it.id}
-            item={it}
-            open={expandedId === it.id}
-            onToggle={() => setExpandedId(expandedId === it.id ? null : it.id)}
-            onDelete={handleDelete}
-            isAdmin={me?.isAdmin}
-            loading={loading}
-          />
-        ))}
-        {!rows.length && (
+        {loading ? (
+          // 스켈레톤
+          <div className="p-6 space-y-4">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="h-20 bg-gray-100 animate-pulse rounded" />
+            ))}
+          </div>
+        ) : rows.length ? (
+          rows.map((it) => (
+            <PartnerItem
+              key={it.id}
+              item={it}
+              open={expandedId === it.id}
+              onToggle={() =>
+                setExpandedId(expandedId === it.id ? null : it.id)
+              }
+              onDelete={handleDelete}
+              isAdmin={me?.isAdmin}
+              loading={loading}
+            />
+          ))
+        ) : (
           <div className="py-10 text-center text-gray-500">
             결과가 없습니다.
           </div>
