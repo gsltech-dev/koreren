@@ -95,7 +95,7 @@ export default function ProductSection() {
                       <div className="bg-gray-50 flex flex-col justify-center items-center py-8 rounded">
                         <h3 className="text-base font-bold">{it.title}</h3>
                         <Link
-                          to={it.link}
+                          to="/product/1"
                           className="mt-2 text-sm font-medium text-[#707070] hover:text-gray-600"
                         >
                           VIEW MORE
@@ -124,7 +124,7 @@ export default function ProductSection() {
                         {it.title}
                       </h3>
                       <Link
-                        to={it.link}
+                        to="product/1"
                         className="mt-3 text-sm md:text-base font-medium text-[#707070] hover:text-gray-600"
                       >
                         <span>VIEW MORE</span>
