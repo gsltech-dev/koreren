@@ -311,7 +311,7 @@ export default function PrivacyPolicy() {
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">이메일</td>
-                <td className="border border-gray-300 p-3">jso@gsland.tech</td>
+                <td className="border border-gray-300 p-3">yjk@gsland.tech</td>
               </tr>
             </tbody>
           </table>

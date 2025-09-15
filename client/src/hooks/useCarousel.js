@@ -1,5 +1,11 @@
 // src/hooks/useCarousel.js
-import { useState, useRef, useLayoutEffect, useEffect } from "react";
+import {
+  useState,
+  useRef,
+  useLayoutEffect,
+  useEffect,
+  useCallback,
+} from "react";
 import { gsap } from "gsap";
 
 /**
@@ -17,6 +23,12 @@ import { gsap } from "gsap";
  * @param {number}  [options.autoplay.delay=3500]         // 간격(ms)
  * @param {boolean} [options.autoplay.pauseOnHover=true]  // 호버 시 일시정지
  * @param {boolean} [options.autoplay.pauseOnVisibility=true] // 탭 비가시성 시 일시정지
+ *
+ * (추가) 드래그/스와이프 지원:
+ *  - Pointer 이벤트 기반으로 모바일/데스크톱 공통 동작
+ *  - 드래그 중에는 트랙을 실시간으로 이동시키고, 업 시 임계치 판단 후 스냅/전환
+ *  - 전환·스냅 시 dotIndex를 항상 동기화해 "dot가 못 따라오는 현상" 제거
+ *  - 드래그 시작~종료 동안 autoplay 자동 일시정지, 종료 후 재개
  */
 export default function useCarousel(
   slides,
@@ -54,6 +66,14 @@ export default function useCarousel(
   // autoplay 상태 (enabled면 기본 재생, 아니면 정지)
   const [isPaused, setPaused] = useState(!autoplay?.enabled);
 
+  /* ---------- (추가) 드래그 상태 ---------- */
+  const dragging = useRef(false); // 드래그 중 여부
+  const startX = useRef(0); // 포인터 다운 시 X
+  const lastX = useRef(0); // 마지막 move X
+  const startT = useRef(0); // 포인터 다운 시각
+  const widthRef = useRef(1); // 트랙 폭 캐시
+  const basePosAtDragStart = useRef(0); // 드래그 시작 시 논리 위치(cur, 실수 사용)
+
   // 초기 위치(화면 그리기 전 고정) — transform은 GSAP만 제어
   useLayoutEffect(() => {
     const el = trackRef.current;
@@ -61,11 +81,18 @@ export default function useCarousel(
     gsap.set(el, { xPercent: -100 * cur, force3D: true });
   }, []); // eslint-disable-line
 
+  // (추가) pos→dotIndex 변환: 스냅/전환의 단일 진실원
+  const setDotFromPos = useCallback(
+    (pos) => setDotIndex((((pos - 1) % LEN) + LEN) % LEN),
+    [LEN]
+  );
+
   // 스냅(애니메 없이 위치 세팅)
   const snapTo = (pos) => {
     const el = trackRef.current;
     gsap.set(el, { xPercent: -100 * pos, force3D: true });
     setCur(pos);
+    setDotFromPos(pos); // (추가) dot 동기화
   };
 
   // 공통 이동 (한 칸 이동 후 경계에서 스냅)
@@ -91,28 +118,27 @@ export default function useCarousel(
           snapTo(REAL_LAST);
         } else {
           setCur(to);
+          setDotFromPos(to); // (추가) dot 동기화 보강
         }
         isAnimating.current = false;
       },
     });
   };
 
-  // 다음/이전 (인디케이터는 즉시 반응)
-  const next = () => {
+  // 다음/이전 (인디케이터는 즉시 반응) — 내부적으로도 dot 동기화되므로 setDotIndex 생략 가능
+  const next = useCallback(() => {
     if (isAnimating.current) return;
-    setDotIndex((d) => (d + 1) % LEN);
     moveTo(cur + 1);
-  };
-  const prev = () => {
+  }, [cur]);
+
+  const prev = useCallback(() => {
     if (isAnimating.current) return;
-    setDotIndex((d) => (d - 1 + LEN) % LEN);
     moveTo(cur - 1);
-  };
+  }, [cur]);
 
   // 인디케이터 클릭 이동 (경계 자연스럽게 처리)
   const goReal = (i /* 0..LEN-1 */) => {
     if (isAnimating.current) return;
-    setDotIndex(i);
     const target = i + 1; // extended 기준
     if (cur === REAL_LAST && target === REAL_FIRST) {
       moveTo(REAL_LAST + 1); // → 1로
@@ -192,6 +218,95 @@ export default function useCarousel(
       : undefined,
   };
 
+  /* ---------- (추가) Drag / Swipe 구현 ---------- */
+
+  // (추가) 드래그 중 실시간 xPercent 적용 로직
+  const setXPercentDuringDrag = (deltaPx) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const w = widthRef.current || 1;
+    const deltaRatio = deltaPx / w; // 화면 대비 이동 비율
+    const visualPos = basePosAtDragStart.current - deltaRatio; // 우측 드래그(+dx) → pos 감소
+    gsap.set(el, { xPercent: -100 * visualPos, force3D: true });
+  };
+
+  // (추가) 포인터 다운: 드래그 시작, autoplay 정지
+  const onPointerDown = (e) => {
+    if (isAnimating.current) return;
+    dragging.current = true;
+
+    // 트랙 전체 너비를 기준으로 비율 계산 → 반응형에서도 일관
+    widthRef.current =
+      trackRef.current?.getBoundingClientRect().width || window.innerWidth || 1;
+
+    startX.current = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
+    lastX.current = startX.current;
+    startT.current = performance.now();
+    basePosAtDragStart.current = cur;
+
+    gsap.killTweensOf(trackRef.current);
+    autoplayApi.stop();
+
+    // 포인터 캡처로 move/up 누락 방지
+    try {
+      e.currentTarget.setPointerCapture?.(e.pointerId);
+    } catch {}
+  };
+
+  // (추가) 포인터 이동: 트랙을 실시간으로 따라오게
+  const onPointerMove = (e) => {
+    if (!dragging.current) return;
+    const x =
+      e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? lastX.current;
+    lastX.current = x;
+    const dx = x - startX.current;
+    setXPercentDuringDrag(dx);
+  };
+
+  // (추가) 포인터 업: 임계치 판정 후 스냅/전환, autoplay 재개
+  const onPointerUp = () => {
+    if (!dragging.current) return;
+    dragging.current = false;
+
+    const dx = lastX.current - startX.current;
+    const dt = Math.max(1, performance.now() - startT.current); // ms
+    const speed = (Math.abs(dx) / dt) * 1000; // px/s
+
+    const w = widthRef.current || 1;
+    const ratio = Math.abs(dx) / w; // 화면 대비 이동 비율
+    const wantNext = dx < 0;
+    const crossedDistance = ratio >= 0.18; // 화면 18% 이동 기준
+    const crossedSpeed = speed >= 600; // 빠른 플릭 허용
+
+    if (Math.abs(dx) >= swipeThreshold && (crossedDistance || crossedSpeed)) {
+      if (wantNext) moveTo(cur + 1);
+      else moveTo(cur - 1);
+    } else {
+      snapTo(cur); // 원위치
+    }
+
+    if (!autoplay.paused) autoplayApi.start();
+  };
+
+  // (추가) 터치·마우스 경계 케이스 보강
+  const dragHandlers = {
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
+    onPointerCancel: onPointerUp,
+    onMouseLeave: () => {
+      if (dragging.current) onPointerUp();
+    },
+  };
+
+  /**
+   * (추가) 통합 사용법
+   * - 트랙 래퍼(div)에 ref={trackRef}와 함께 {...dragHandlers}를 그대로 펼쳐 넣으세요.
+   *   <div ref={trackRef} {...dragHandlers} className="flex ...">...</div>
+   * - autoplay.pauseOnHover을 사용하는 경우, 래퍼에 onMouseEnter/Leave를 연결하려면
+   *   {...autoplay}를 별도 요소에 바인딩하거나 수동으로 이벤트를 달아도 됩니다.
+   */
+
   return {
     // 렌더링/제어
     trackRef,
@@ -204,5 +319,8 @@ export default function useCarousel(
 
     // autoplay 제어
     autoplay: autoplayApi,
+
+    // (추가) 드래그/스와이프 이벤트 핸들러
+    dragHandlers,
   };
 }
