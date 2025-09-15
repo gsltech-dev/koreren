@@ -39,7 +39,7 @@ export default function SelectBasic({
         ref={btnRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="h-9 md:h-10 w-full rounded border px-3 text-left text-xs md:text-sm lg:text-sm flex items-center justify-between"
+        className="h-11 w-full rounded border px-3 text-left text-xs md:text-sm lg:text-sm flex items-center justify-between"
         aria-haspopup="listbox"
         aria-expanded={open}
       >
@@ -73,7 +73,7 @@ export default function SelectBasic({
                 onChange(o.value);
                 setOpen(false);
               }}
-              className={`px-3 py-2 cursor-pointer text-sm hover:bg-gray-100 ${
+              className={`px-3 py-3 cursor-pointer text-sm hover:bg-gray-100 ${
                 o.value === value ? "bg-gray-50 font-medium" : ""
               }`}
             >

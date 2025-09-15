@@ -215,10 +215,10 @@ export default function NoticeList() {
             name="q"
             defaultValue={q}
             placeholder="검색어"
-            className="h-9 md:h-10 min-w-[160px] md:min-w-[220px] rounded border px-2 md:px-3 text-xs md:text-sm"
+            className="h-11 min-w-[160px] md:min-w-[220px] rounded border px-2 md:px-3 text-xs md:text-sm"
           />
 
-          <button className="h-9 md:h-10 rounded border px-3 md:px-4 text-xs md:text-sm">
+          <button className="h-11 rounded border px-3 md:px-4 text-xs md:text-sm">
             찾기
           </button>
         </div>

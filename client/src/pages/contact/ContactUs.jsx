@@ -1,15 +1,17 @@
 // src/pages/contact/ContactUs.jsx
 import { useState } from "react";
+import SelectBasic from "../../components/SelectBasic";
 
 const API = import.meta.env.VITE_API_BASE || "http://localhost:8080";
 
 const TYPES = ["문의유형", "제품 문의", "A/S 문의", "제휴/협업", "기타"];
+const TYPE_OPTIONS = TYPES.map((t) => ({ label: t, value: t }));
 
 const ALLOW_TYPES = ["image/jpeg", "image/jpg", "image/png", "application/zip"];
 const MAX_PER_FILE = 10 * 1024 * 1024; // 10MB
 
 export default function ContactUs() {
-  const [type, setType] = useState(TYPES[0]);
+  const [type, setType] = useState(TYPE_OPTIONS[0].value);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -67,7 +69,7 @@ export default function ContactUs() {
       if (!r.ok) throw new Error(j.error?.message || "전송 실패");
       alert("등록 완료되었습니다.");
       // 초기화
-      setType(TYPES[0]);
+      setType(TYPE_OPTIONS[0].value);
       setName("");
       setPhone("");
       setEmail("");
@@ -97,22 +99,17 @@ export default function ContactUs() {
         <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-y-3 md:gap-y-4 md:gap-x-6">
           {/* 문의유형 */}
           <label className="text-sm md:self-center md:text-lg">문의유형</label>
-          <div>
-            <select
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm md:text-base"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-            >
-              {TYPES.map((t) => (
-                <option key={t}>{t}</option>
-              ))}
-            </select>
-          </div>
+          <SelectBasic
+            value={type}
+            onChange={setType}
+            options={TYPE_OPTIONS}
+            className="w-full"
+          />
 
           {/* 이름 */}
           <label className="self-center text-sm md:text-lg">이름</label>
           <input
-            className="w-full border border-gray-300 rounded px-3 py-2 text-sm md:text-base"
+            className="w-full border h-10 border-gray-300 rounded px-3 py-2 text-sm md:text-base"
             placeholder="이름을 입력해주세요."
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -121,7 +118,7 @@ export default function ContactUs() {
           {/* 연락처 */}
           <label className="self-center text-sm lg:text-lg">연락처</label>
           <input
-            className="w-full border border-gray-300 rounded px-3 py-2 text-sm md:text-base"
+            className="w-full border h-10 border-gray-300 rounded px-3 py-2 text-sm md:text-base"
             placeholder="연락처를 입력해주세요."
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -130,7 +127,7 @@ export default function ContactUs() {
           {/* 이메일 */}
           <label className="self-center text-sm lg:text-lg">이메일</label>
           <input
-            className="w-full border border-gray-300 rounded px-3 py-2 text-sm md:text-base"
+            className="w-full border h-10 border-gray-300 rounded px-3 py-2 text-sm md:text-base"
             placeholder="이메일을 입력해주세요."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -139,7 +136,7 @@ export default function ContactUs() {
           {/* 제목 */}
           <label className="self-center text-sm lg:text-lg">제목</label>
           <input
-            className="w-full border border-gray-300 rounded px-3 py-2 text-sm md:text-base"
+            className="w-full border h-10 border-gray-300 rounded px-3 py-2 text-sm md:text-base"
             placeholder="제목을 입력해주세요."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
