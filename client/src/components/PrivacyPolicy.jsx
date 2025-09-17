@@ -303,7 +303,7 @@ export default function PrivacyPolicy() {
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">1:1 문의 담당자</td>
-                <td className="border border-gray-300 p-3">장시온</td>
+                <td className="border border-gray-300 p-3">강유진</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">연락처</td>
