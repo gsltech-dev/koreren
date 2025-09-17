@@ -115,7 +115,7 @@ export default function PartnersList() {
   return (
     <div className="container max-w-7xl mx-auto px-4 py-10">
       <h1 className="text-2xl md:text-3xl lg:text-5xl font-semibold text-center md:text-left">
-        PARTBERS
+        PARTNERS
       </h1>
       <p className="mt-2 text-[14px] md:text-base lg:text-[23px] text-gray-600 text-center md:text-left">
         코어렌의 가치를 함께 전하는 매장들을 소개해드리겠습니다.

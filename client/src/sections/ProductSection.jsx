@@ -1,17 +1,17 @@
 // src/components/ProductSection.jsx
 import { Link } from "react-router-dom";
 import usePairCarousel from "../hooks/usePairCarousel";
-import prd1 from "../assets/images/product/banner_portrait(1000x1333).webp";
-import prd2 from "../assets/images/product/banner_prd_1.webp";
-import prd3 from "../assets/images/product/banner_prd_2.webp";
-import prd4 from "../assets/images/product/banner_prd_3.webp";
-import prd5 from "../assets/images/product/banner_prd_4.webp";
+import prd1 from "../assets/images/product/deeperwaveFront.webp";
+import prd2 from "../assets/images/product/headfit.webp";
+import prd3 from "../assets/images/product/wavefit.webp";
+import prd4 from "../assets/images/product/allfit.webp";
+import prd5 from "../assets/images/product/conductiveGel.webp";
 
 const items = [
-  { src: prd2, title: "핸드피스 올핏", link: "/products/allfit" },
-  { src: prd3, title: "핸드피스 헤드핏", link: "/products/headfit" },
-  { src: prd4, title: "핸드피스 집중핏", link: "/products/focusfit" },
-  { src: prd5, title: "DEEPERWAVE", link: "/products/deeperwave" },
+  { src: prd2, title: "핸드피스 헤드핏", link: "/products" },
+  { src: prd3, title: "핸드피스 웨이브핏", link: "/products" },
+  { src: prd4, title: "핸드피스 올핏", link: "/products" },
+  { src: prd5, title: "디퍼웨이브 컨덕티브 젤", link: "/products" },
 ];
 
 export default function ProductSection() {

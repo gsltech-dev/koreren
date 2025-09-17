@@ -40,7 +40,7 @@ export default function HeroSection() {
   const baseLen = slides.length;
 
   return (
-    <section className="relative h-auto lg:h-screen -mt-[90px] overflow-hidden select-none bg-black">
+    <section className="relative h-auto lg:h-screen -mt-[20px] lg:-mt-[90px] overflow-hidden select-none bg-black">
       <div
         ref={trackRef}
         className="flex will-change-transform lg:absolute lg:inset-0"
