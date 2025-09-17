@@ -9,6 +9,7 @@ import { warmup } from "./lib/warmupApi"; // 미리 서버 불러오기 웜업
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop"; //Link 이동 시 스크롤 항상 맨 위로
+import Canonical from "./components/Canonical"; // SEO 중복 페널티를 피하고, 검색 결과도 하나로 모아짐.
 
 // 페이지 컴포넌트
 import Home from "./pages/Home";
@@ -53,6 +54,7 @@ function App() {
       <ScrollToTop /> {/* 라우트 바뀔 때마다 스크롤 초기화 */}
       <div className="flex flex-col min-h-dvh">
         <Header />
+        <Canonical />
         <main className="flex-1 overflow-x-hidden">
           <Routes>
             <Route path="/" element={<Home />} />
