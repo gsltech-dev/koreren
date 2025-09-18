@@ -92,7 +92,7 @@ export default function Header() {
     >
       {/* nav를 relative로 두고, nav 영역을 벗어나면 전체 닫기 */}
       <nav
-        className="relative max-w-full h-[90px] px-3 md:px-20"
+        className="relative max-w-full h-[70px] md:h-[90px] px-3 md:px-20"
         onMouseLeave={() => setIsGnbOpen(false)}
       >
         <div className="flex h-full items-center justify-start">
