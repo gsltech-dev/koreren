@@ -1,7 +1,7 @@
 import img1 from "../assets/images/instagram/instagram_01.jpg";
 import img2 from "../assets/images/instagram/instagram_02.jpg";
 import img3 from "../assets/images/instagram/instagram_03.jpg";
-
+import img4 from "../assets/images/instagram/sideview.webp";
 export default function InstaSection() {
   return (
     <section className="py-10 mb-[100px]  md:mb-[150px] lg:mb-[310px]">
@@ -13,7 +13,7 @@ export default function InstaSection() {
           </span>
         </div>
 
-        <div className="grid grid-cols-3 lg:grid-cols-3 gap-0">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
           <a
             href="https://www.instagram.com/koreren_official/"
             target="_blank"
@@ -48,6 +48,18 @@ export default function InstaSection() {
           >
             <img
               src={img3}
+              alt="instagram post 3"
+              className="w-full h-full object-cover"
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/koreren_official/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="aspect-square block"
+          >
+            <img
+              src={img4}
               alt="instagram post 3"
               className="w-full h-full object-cover"
             />
