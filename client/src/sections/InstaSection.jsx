@@ -1,7 +1,6 @@
-import img1 from "../assets/images/instagram/sideview.webp";
-import img2 from "../assets/images/instagram/sideview.webp";
-import img3 from "../assets/images/instagram/sideview.webp";
-import img4 from "../assets/images/instagram/sideview.webp";
+import img1 from "../assets/images/instagram/instagram_01.jpg";
+import img2 from "../assets/images/instagram/instagram_02.jpg";
+import img3 from "../assets/images/instagram/instagram_03.jpg";
 
 export default function InstaSection() {
   return (
@@ -14,19 +13,45 @@ export default function InstaSection() {
           </span>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="aspect-square">
-            <img src={img1} alt="" className="w-full h-full object-cover" />
-          </div>
-          <div className="aspect-square">
-            <img src={img2} alt="" className="w-full h-full object-cover" />
-          </div>
-          <div className="aspect-square">
-            <img src={img3} alt="" className="w-full h-full object-cover" />
-          </div>
-          <div className="aspect-square">
-            <img src={img4} alt="" className="w-full h-full object-cover" />
-          </div>
+        <div className="grid grid-cols-3 lg:grid-cols-3 gap-0">
+          <a
+            href="https://www.instagram.com/koreren_official/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="aspect-square block"
+          >
+            <img
+              src={img1}
+              alt="instagram post 1"
+              className="w-full h-full object-cover"
+            />
+          </a>
+
+          <a
+            href="https://www.instagram.com/koreren_official/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="aspect-square block"
+          >
+            <img
+              src={img2}
+              alt="instagram post 2"
+              className="w-full h-full object-cover"
+            />
+          </a>
+
+          <a
+            href="https://www.instagram.com/koreren_official/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="aspect-square block"
+          >
+            <img
+              src={img3}
+              alt="instagram post 3"
+              className="w-full h-full object-cover"
+            />
+          </a>
         </div>
       </div>
     </section>

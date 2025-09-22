@@ -59,7 +59,7 @@ export default function ProductSection() {
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 py-5">
           <div className="col-span-1 relative">
-            <Link to="/product/1" className="block">
+            <Link to="/product/1" className="block xl:h-full">
               <img
                 src={prd1}
                 alt="prd1"
