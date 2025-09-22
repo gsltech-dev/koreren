@@ -112,13 +112,18 @@ export default function Footer() {
 
             {/* 아이콘 */}
             <div className="flex gap-3">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-neutral-400 flex items-center justify-center bg-[#707070]">
+              <a
+                href="https://www.instagram.com/koreren_official/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-neutral-400 flex items-center justify-center bg-[#707070]"
+              >
                 <img
                   src={instagram}
                   alt="instagram"
                   className="w-[15px] h-[15px] md:w-[20px] md:h-[20px]"
                 />
-              </div>
+              </a>
               <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-neutral-400 flex items-center justify-center bg-[#707070]">
                 <img
                   src={kakao}
