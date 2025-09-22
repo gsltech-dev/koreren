@@ -34,7 +34,7 @@ export default function InstaSection() {
             className="aspect-square block"
           >
             <img
-              src={img2}
+              src={img3}
               alt="instagram post 2"
               className="w-full h-full object-cover"
             />
@@ -47,7 +47,7 @@ export default function InstaSection() {
             className="aspect-square block"
           >
             <img
-              src={img3}
+              src={img2}
               alt="instagram post 3"
               className="w-full h-full object-cover"
             />
