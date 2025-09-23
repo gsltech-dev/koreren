@@ -80,10 +80,10 @@ export default function NoticeDetail() {
 
         <article
           className="
-    min-h-[280px] py-10
-    tiptap max-w-none
-    [&_*]:max-w-full
-  "
+            min-h-[280px] py-10
+            tiptap max-w-none
+            [&_*]:max-w-full
+          "
           dangerouslySetInnerHTML={{ __html: item.body || "" }}
         />
 
@@ -120,7 +120,7 @@ export default function NoticeDetail() {
         {item.prev && (
           <div
             className={`flex items-center justify-start py-3 ${
-              item.next ? "border-b border-gray-200" : ""
+              item.next ? "border-b border-gray-2 00" : ""
             }`}
           >
             <span className="text-gray-500">이전</span>

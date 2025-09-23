@@ -41,7 +41,13 @@ body {
 /* tiptap 기본 블록 간격 */
 .tiptap p {
   margin: 0.5rem 0;
+  white-space: pre-wrap; /* 엔터/개행 표시 */
 }
+
+.tiptap p:empty::before {
+  content: "\00a0"; /* 빈 <p>도 높이 생겨 빈줄 표시 */
+}
+
 .tiptap h1 {
   font-size: 1.75rem;
   font-weight: 700;
