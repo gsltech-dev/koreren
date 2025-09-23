@@ -81,10 +81,8 @@ export default function NoticeDetail() {
         <article
           className="
     min-h-[280px] py-10
-    prose prose-neutral max-w-none
+    tiptap max-w-none
     [&_*]:max-w-full
-    prose-img:block prose-img:mx-auto prose-img:h-auto prose-img:w-auto
-    prose-table:w-full prose-table:overflow-x-auto
   "
           dangerouslySetInnerHTML={{ __html: item.body || "" }}
         />

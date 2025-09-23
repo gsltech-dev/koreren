@@ -31,7 +31,10 @@ export default function NoticeUpdate() {
 
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ heading: { levels: [1, 2, 3] } }),
+      StarterKit.configure({
+        heading: { levels: [1, 2, 3] },
+        underline: false,
+      }),
       Highlight,
       Placeholder.configure({ placeholder: "내용을 입력하세요..." }),
       Underline,
@@ -162,10 +165,7 @@ export default function NoticeUpdate() {
               data-lenis-prevent
               onClick={() => editor?.commands.focus()}
             >
-              <EditorContent
-                editor={editor}
-                className="prose max-w-none tiptap"
-              />
+              <EditorContent editor={editor} className="max-w-none tiptap" />
             </div>
           </div>
         </EditorContext.Provider>

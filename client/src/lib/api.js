@@ -3,21 +3,27 @@ import { sb } from "../lib/supabase";
 
 const API = import.meta.env.VITE_API_BASE || "http://localhost:8080";
 
+async function getAuthHeaders(extra = {}) {
+  const { data } = await sb.auth.getSession();
+  const token = data.session?.access_token || null;
+  return token ? { ...extra, Authorization: `Bearer ${token}` } : extra;
+}
+
 export async function createNoticeViaServer(payload) {
   const r = await fetch(`${API}/notices`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: await getAuthHeaders({ "Content-Type": "application/json" }),
     body: JSON.stringify(payload),
   });
   const j = await r.json();
   if (!r.ok || !j.ok) throw new Error(j.error?.message || "생성 실패");
-  return j.data; // { id }
+  return j.data;
 }
 
 export async function updateNoticeViaServer(id, patch) {
   const r = await fetch(`${API}/notices/${id}`, {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers: await getAuthHeaders({ "Content-Type": "application/json" }),
     body: JSON.stringify(patch),
   });
   const j = await r.json();
@@ -26,7 +32,10 @@ export async function updateNoticeViaServer(id, patch) {
 }
 
 export async function deleteNoticeViaServer(id) {
-  const r = await fetch(`${API}/notices/${id}`, { method: "DELETE" });
+  const r = await fetch(`${API}/notices/${id}`, {
+    method: "DELETE",
+    headers: await getAuthHeaders(),
+  });
   const j = await r.json();
   if (!r.ok || !j.ok) throw new Error(j.error?.message || "삭제 실패");
 }
@@ -165,18 +174,30 @@ export async function uploadImageToStorage(file) {
 }
 
 export async function createNoticeViaServerMultipart(formData) {
-  const r = await fetch(`${API}/notices`, { method: "POST", body: formData });
+  const { sb } = await import("./supabase");
+  const { data } = await sb.auth.getSession();
+  const token = data.session?.access_token || null;
+
+  const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+  const r = await fetch(`${API}/notices`, {
+    method: "POST",
+    headers,
+    body: formData,
+  });
+
   const j = await r.json();
   if (!r.ok || !j.ok) throw new Error(j.error?.message || "생성 실패");
-  return j.data; // { id, body }
+  return j.data;
 }
 
 export async function updateNotice(id, formData) {
   const r = await fetch(`${API}/notices/${id}`, {
     method: "PATCH",
+    headers: await getAuthHeaders(),
     body: formData,
   });
   const j = await r.json();
   if (!r.ok || !j.ok) throw new Error(j.error?.message || "수정 실패");
-  return j.data; // { id, body }
+  return j.data;
 }

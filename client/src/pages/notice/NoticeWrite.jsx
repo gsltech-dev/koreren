@@ -26,10 +26,13 @@ export default function NoticeWrite() {
 
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ heading: { levels: [1, 2, 3] } }),
+      StarterKit.configure({
+        heading: { levels: [1, 2, 3] },
+        underline: false, // ← StarterKit 기본 underline 끄기
+      }),
       Highlight,
       Placeholder.configure({ placeholder: "내용을 입력하세요..." }),
-      Underline,
+      Underline, // ← 여기서만 underline 활성화
       TextAlign.configure({ types: ["heading", "paragraph", "image"] }),
       Image.configure({ inline: false, allowBase64: false }),
     ],
