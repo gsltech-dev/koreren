@@ -303,7 +303,7 @@ export default function PrivacyPolicy() {
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">1:1 문의 담당자</td>
-                <td className="border border-gray-300 p-3">강유진</td>
+                <td className="border border-gray-300 p-3">김유신</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">연락처</td>
@@ -311,7 +311,9 @@ export default function PrivacyPolicy() {
               </tr>
               <tr>
                 <td className="border border-gray-300 p-3">이메일</td>
-                <td className="border border-gray-300 p-3">yjk@gsland.tech</td>
+                <td className="border border-gray-300 p-3">
+                  gsltech7@gmail.com
+                </td>
               </tr>
             </tbody>
           </table>
