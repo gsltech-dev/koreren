@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://koreren.co.kr/sitemap.xml
